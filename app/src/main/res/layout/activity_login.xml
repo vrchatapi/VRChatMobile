@@ -39,7 +39,7 @@
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="로그인"
+        android:text="@string/login"
         android:textSize="30dp"
         android:layout_gravity="center_horizontal|bottom"
         android:id="@+id/login_loginButton"

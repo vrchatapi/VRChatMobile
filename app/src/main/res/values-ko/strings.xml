@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">VRChat Mobile</string>
+    <string name="action_settings">Settings</string>
+    
+    <string name="login">Login</string>
+    <string name="cancel">취소</string>
+    <string name="save">저장</string>
+    <string name="male">남자</string>
+    <string name="female">여자</string>
+    
+    <string name="help">사용설명</string>
+    <string name="logout">로그아웃</string>
+    <string name="feedback">피드백</string>
+</resources>

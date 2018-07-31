@@ -49,10 +49,10 @@ public class LoginActivity extends AppCompatActivity {
 
         Thread t = new Thread(new Runnable() {
             @Override
-            public void run() {    // 오래 거릴 작업을 구현한다
+            public void run() {   
                 // TODO Auto-generated method stub
                 try {
-                    URL url = new URL("https://steamcdn-a.akamaihd.net/steam/apps/438100/header.jpg");
+                    URL url = new URL("https://steamcdn-a.akamaihd.net/steam/apps/438100/header.jpg"); // Change to local resource.
                     InputStream is = url.openStream();
                     Bitmap bm = BitmapFactory.decodeStream(is);
                     bm = getRoundedCornerBitmap(bm, 20);

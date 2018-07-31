@@ -57,10 +57,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        // ** 주의! **
-        // API를 사용하는 모든 작업은 Main스레드에서 사용하면 정상동작 하지 않음!
-        // 그 외의 서브 스레드에서만 API에 접근할 것!
-
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);

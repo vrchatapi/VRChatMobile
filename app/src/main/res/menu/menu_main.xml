@@ -5,21 +5,21 @@
     <item
         android:id="@+id/action_logout"
         android:orderInCategory="100"
-        android:title="로그아웃"
+        android:title="@string/lovout"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_help"
         android:orderInCategory="100"
-        android:title="사용설명"
+        android:title="@string/help"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="설정"
+        android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_feedback"
         android:orderInCategory="100"
-        android:title="피드백"
+        android:title="@string/feedback"
         app:showAsAction="never" />
 </menu>

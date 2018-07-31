@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25dp"
-        android:text="m e m o"
+        android:text="Unknown Translation"
         android:layout_gravity="center"/>
 <LinearLayout
     android:layout_width="match_parent"
@@ -22,14 +22,14 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="남자"
+            android:text="@string/male"
             android:layout_margin="5dp"
             android:id="@+id/memo_sexRadioButton_male"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="여자"
+            android:text="@string/female"
             android:layout_margin="5dp"
             android:id="@+id/memo_sexRadioButton_female"/>
     </RadioGroup>
@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/memo_cancelButton"
-            android:text="취소"/>
+            android:text="@string/cancel"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/memo_saveButton"
-            android:text="저장"/>
+            android:text="@string/save"/>
     </LinearLayout>
 
 </LinearLayout>
