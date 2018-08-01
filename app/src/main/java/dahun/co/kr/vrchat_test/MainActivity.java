@@ -36,7 +36,10 @@ import dahun.co.kr.vrchat_test.API.FriendStatus;
 import dahun.co.kr.vrchat_test.API.VRCFriends;
 import dahun.co.kr.vrchat_test.API.VRCUser;
 import dahun.co.kr.vrchat_test.API.VRCWorld;
-
+/*
+현재 상황 -> TaskThread의 run에서 VRCWorld.fetch를 여러번 실행하는 부분이 있는데, fetch가 서버에 request를 보내고 받는 과정이 들어있어서 오래걸림. 즉, 사용자에게 있어 렉을 유발한다.
+fetch를 최소한으로 사용하여 해결할 수 있도록 해보자. (173번 줄 부근)
+ */
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<UserInfomation> friendsInfomation;
@@ -57,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -164,8 +166,12 @@ public class MainActivity extends AppCompatActivity {
 
                 final List<VRCUser> list_Friends = VRCFriends.fetchFriends(FriendStatus.ONLINE);
 
-                final ArrayList<VRCWorld> list_Friends_world = new ArrayList<VRCWorld>();
+                //현재 상황 체크
 
+                final ArrayList<VRCWorld> list_Worlds = new ArrayList<>();
+                final ArrayList<String> list_Worlds_ins = new ArrayList<>();
+                list_Worlds.clear();
+                list_Worlds_ins.clear();
 
                 Thread t = new Thread(new Runnable() {
                     @Override
@@ -173,32 +179,47 @@ public class MainActivity extends AppCompatActivity {
                         // TODO Auto-generated method stub
 
                         for (int i = 0; i < list_Friends.size(); i++) {
-                            String[] world_ins = list_Friends.get(i).getLocation().split(":|~");
-                            VRCWorld.fetch(world_ins[0]);
-                            //VRCWorld.fetch(world_ins[0]).getName() + ":" + (world_ins.length != 1 ? world_ins[1] : "")
+                            if (list_Friends.get(i).getLocation().equals("private")){
+                                list_Worlds.add(null);
+                                list_Worlds_ins.add(null);
+                            }
+                            else{
+                                String[] tmp = list_Friends.get(i).getLocation().split(":|~");
+                                list_Worlds.add(VRCWorld.fetch(tmp[0]));
+                                if (tmp.length > 1)
+                                    list_Worlds_ins.add(tmp[1]);
+                                else
+                                    list_Worlds_ins.add("");
+                            }
                         }
 
 
                     }
                 });
+                t.start();
+                try {
+                    t.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
                 for (int i = 0; i < list_Friends.size(); i++) {
 
                     if (list_Friends.get(i).getLocation().equals("private")) {
                         //Log.v("Friends",list_Friends.get(i).toString() + "  위치 : private");
                         if (friendsInfomation.size() > i)
-                            friendsInfomation.set(i, new UserInfomation(list_Friends.get(i).getCurrentAvatarThumbnailImageUrl(), list_Friends.get(i).getDisplayName().toString(), "private"));
+                            friendsInfomation.set(i, new UserInfomation(list_Friends.get(i).getCurrentAvatarThumbnailImageUrl(), list_Friends.get(i).getDisplayName().toString(), "private", UserInfomation.loadingBitmap(list_Friends.get(i).getCurrentAvatarThumbnailImageUrl())));
                         else
-                            friendsInfomation.add(new UserInfomation(list_Friends.get(i).getCurrentAvatarThumbnailImageUrl(), list_Friends.get(i).getDisplayName().toString(), "private"));
+                            friendsInfomation.add(new UserInfomation(list_Friends.get(i).getCurrentAvatarThumbnailImageUrl(), list_Friends.get(i).getDisplayName().toString(), "private", UserInfomation.loadingBitmap(list_Friends.get(i).getCurrentAvatarThumbnailImageUrl())));
                     } else {
                         String[] world_ins = list_Friends.get(i).getLocation().split(":|~");
                         //Log.v("Friends",list_Friends.get(i).toString() + "  위치 : " + VRCWorld.fetch(world_ins[0]).getName() + ":" + world_ins[1]);
                         if (friendsInfomation.size() > i)
                             //friendsInfomation.set(i, new UserInfomation(list_Friends.get(i).getCurrentAvatarThumbnailImageUrl(), list_Friends.get(i).getDisplayName().toString(), VRCWorld.fetch(world_ins[0]).getName() + ":" + (world_ins.length != 1 ? world_ins[1] : "")));
-                            friendsInfomation.set(i, new UserInfomation(list_Friends.get(i).getCurrentAvatarThumbnailImageUrl(), list_Friends.get(i).getDisplayName().toString(), VRCWorld.fetch(world_ins[0]).getName() + ":" + (world_ins.length != 1 ? world_ins[1] : "")));
+                            friendsInfomation.set(i, new UserInfomation(list_Friends.get(i).getCurrentAvatarThumbnailImageUrl(), list_Friends.get(i).getDisplayName().toString(), list_Worlds.get(i).getName() + ":" + list_Worlds_ins.get(i), UserInfomation.loadingBitmap(list_Friends.get(i).getCurrentAvatarThumbnailImageUrl())));
                         else
                             //friendsInfomation.add(new UserInfomation(list_Friends.get(i).getCurrentAvatarThumbnailImageUrl(), list_Friends.get(i).getDisplayName().toString(), VRCWorld.fetch(world_ins[0]).getName() + ":" + (world_ins.length != 1 ? world_ins[1] : "")));
-                            friendsInfomation.add(new UserInfomation(list_Friends.get(i).getCurrentAvatarThumbnailImageUrl(), list_Friends.get(i).getDisplayName().toString(), VRCWorld.fetch(world_ins[0]).getName() + ":" + (world_ins.length != 1 ? world_ins[1] : "")));
+                            friendsInfomation.add(new UserInfomation(list_Friends.get(i).getCurrentAvatarThumbnailImageUrl(), list_Friends.get(i).getDisplayName().toString(), list_Worlds.get(i).getName() + ":" + list_Worlds_ins.get(i), UserInfomation.loadingBitmap(list_Friends.get(i).getCurrentAvatarThumbnailImageUrl())));
                     }
                     Log.i("ImageURI", list_Friends.get(i).getCurrentAvatarThumbnailImageUrl());
                     MainActivity.handler.sendEmptyMessage(0);

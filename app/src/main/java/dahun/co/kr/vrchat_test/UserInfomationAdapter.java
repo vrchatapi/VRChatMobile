@@ -47,8 +47,6 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
         TextView displayNameTextView;
         TextView locationTextView;
         LinearLayout itemLinearLayout;
-        String ImageURL="";
-        Bitmap bm;
 
         public UserInfomationViewHolder(View itemView) {
             super(itemView);
@@ -102,9 +100,9 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
 
         shared = context.getSharedPreferences(showData.getDisplayName(),Context.MODE_PRIVATE);
         editor = shared.edit();
-
+/*
         if (!holder.ImageURL.equals(showData.getImageURI())) {
-            Log.i("thumnailImage_Reloading", showData.getDisplayName() + " : " + holder.ImageURL + " -> " + showData.getImageURI());
+            Log.i("thumnailImage_Reloading", "position : " + position + ", " + showData.getDisplayName() + " : " + holder.ImageURL + " -> " + showData.getImageURI());
             holder.ImageURL = showData.getImageURI();
             Thread t = new Thread(new Runnable() {
                 @Override
@@ -116,7 +114,6 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
                         holder.bm = BitmapFactory.decodeStream(is);
                         holder.bm = getRoundedCornerBitmap(holder.bm, 100);
                         holder.thumnailImageView.setImageBitmap(holder.bm); //비트맵 객체로 보여주기
-                        Log.i("Thread_bindViewHolder", "position : " + position);
 
                     } catch (Exception e) {
 
@@ -124,13 +121,14 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
 
                 }
             });
-            holder.thumnailImageView.setImageBitmap(null);
+            //holder.thumnailImageView.setImageBitmap(null);
             t.start();
         }
         else {
-            holder.thumnailImageView.setImageBitmap(holder.bm); //비트맵 객체로 보여주기
+            //holder.thumnailImageView.setImageBitmap(holder.bm); //비트맵 객체로 보여주기
         }
-        //
+        */
+        holder.thumnailImageView.setImageBitmap(showData.getImageBitmap());
         holder.displayNameTextView.setText(showData.getDisplayName());
         holder.locationTextView.setText(showData.getLocation());
 
