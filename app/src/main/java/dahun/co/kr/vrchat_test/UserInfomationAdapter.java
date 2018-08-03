@@ -58,25 +58,67 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
         }
 
         @Override
-        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+        public void onCreateContextMenu(ContextMenu contextMenu, final View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
             //contextMenu.setHeaderTitle("");
+            // 밑 줄이 누른 곳에 써있는 displayName 가져오는법.
+            //((TextView)(view.findViewById(R.id.displayName_textView))).getText().toString();
+            Log.i("view_info", "" + ((TextView)(view.findViewById(R.id.displayName_textView))).getText().toString());
             contextMenu.add(0, view.getId(), 0, "메모 초기화").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem menuItem) {
+                    shared = context.getSharedPreferences(((TextView)(view.findViewById(R.id.displayName_textView))).getText().toString(), Context.MODE_PRIVATE);
+                    editor = shared.edit();
                     editor.remove("sex");
+                    editor.remove("vr");
                     editor.remove("vr");
                     editor.remove("memo");
                     editor.commit();
                     return true;
                 }
             });//groupId, itemId, order, title
-            contextMenu.add(0, view.getId(), 0, "친구삭제").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            contextMenu.add(1, view.getId(), 0, "친구삭제").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem menuItem) {
                     // 친구를 삭제하는 코드를 입력하세요
                     return true;
                 }
             });
+
+            if (!DataUpdateThread.notificationList.contains(((TextView)(view.findViewById(R.id.displayName_textView))).getText().toString())) {
+                contextMenu.add(2, view.getId(), 0, "접속 알림 켜기").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        DataUpdateThread.notificationList.add(((TextView)(view.findViewById(R.id.displayName_textView))).getText().toString());
+                        // NotificationList에 displayName 집어넣기.
+                        Log.i("notificationList", DataUpdateThread.notificationList.toString());
+                        SharedPreferences.Editor editor = DataUpdateService.context.getSharedPreferences(DataUpdateThread.SETTING_SAVE, Context.MODE_PRIVATE).edit();
+                        editor.putInt(DataUpdateService.id + "notificationList_size", DataUpdateThread.notificationList.size());
+                        for (int i = 0; i < DataUpdateThread.notificationList.size(); i++) {
+                            editor.putString(DataUpdateService.id + "notificationList" + i, DataUpdateThread.notificationList.get(i));
+                        }
+                        editor.commit();
+                        return true;
+                    }
+                });
+            }
+            else {
+                contextMenu.add(3, view.getId(), 0, "접속 알림 끄기").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        DataUpdateThread.notificationList.remove(((TextView)(view.findViewById(R.id.displayName_textView))).getText().toString());
+                        // NotificationList에서 displayName 삭제하기
+                        Log.i("notificationList", DataUpdateThread.notificationList.toString());
+                        SharedPreferences.Editor editor = DataUpdateService.context.getSharedPreferences(DataUpdateThread.SETTING_SAVE, Context.MODE_PRIVATE).edit();
+                        editor.putInt(DataUpdateService.id + "notificationList_size", DataUpdateThread.notificationList.size());
+                        for (int i = 0; i < DataUpdateThread.notificationList.size(); i++) {
+                            editor.putString(DataUpdateService.id + "notificationList" + i, DataUpdateThread.notificationList.get(i));
+                        }
+                        editor.commit();
+                        return true;
+                    }
+                });
+            }
+
         }
 
 

@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,9 +19,10 @@ import dahun.co.kr.vrchat_test.API.VRCUser;
 
 public class DataUpdateService extends Service {
 
-    static ArrayList<UserInfomation> friendsInfomation = new ArrayList<>();;
+    //static ArrayList<UserInfomation> friendsInfomation = new ArrayList<>();
     static Context context;
-    static DataUpdateThread updater;
+    static DataUpdateThread updater = new DataUpdateThread();
+    static String id;
 
     @Nullable
     @Override
@@ -30,35 +32,55 @@ public class DataUpdateService extends Service {
     }
 
     @Override
-    public void onCreate() {
+    public void onCreate() {    // 처음 생성될 떄 호출
         super.onCreate();
 
-        friendsInfomation.clear();
-        Log.i("1.friendsInfomation", "초기화 완료 : " + (friendsInfomation == null?"null":"not null"));
+
+
+        //friendsInfomation.clear();
+        //Log.i("1.friendsInfomation", "초기화 완료 : " + (friendsInfomation == null?"null":"not null"));
         context = this;
-        updater = new DataUpdateThread();
-        Log.i("Thread run", "call run()");
-        SharedPreferences shared = getSharedPreferences("AutoLogin", MODE_PRIVATE);
-        if (shared.contains("id") && shared.contains("pwd")) {
-            String id = shared.getString("id", null);
-            String pwd = shared.getString("pwd", null);
-            login(id, pwd);
+
+        SharedPreferences autoLoginShared = getSharedPreferences("AutoLogin", MODE_PRIVATE);
+        if (autoLoginShared.contains("id") && autoLoginShared.contains("pwd")) {
+            id = autoLoginShared.getString("id", null);
+            String pwd = autoLoginShared.getString("pwd", null);
+            if (!login(id, pwd))
+                this.stopSelf();
         }
-        Log.i("LoginResult", "" + VRCUser.isLoggedIn());
-        DataUpdateThread updater = new DataUpdateThread();
-        updater.start();
+
 
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public int onStartCommand(Intent intent, int flags, int startId) {      //  startService 하면 호출
+        //Toast.makeText(this, "서비스를 시작합니다.", Toast.LENGTH_SHORT).show();
+        Log.i("Thread run", "call run()");
+        Log.i("LoginResult", "" + VRCUser.isLoggedIn());
+
+
+
+        if (updater.isAlive() == false){
+            Log.i("updaterThread", "재시작");
+            updater = new DataUpdateThread();
+            updater.start();
+        }
+/*
+        while(updater.isAlive()) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+*/
         return super.onStartCommand(intent, flags, startId);
 
     }
 
 
 
-    public boolean login(final String id, final String pwd) {
+    public boolean login(final String id, final String pwd) {   // 로그인 해주는 함수
         Thread t = new Thread() {
             @Override
             public void run() {
@@ -74,7 +96,7 @@ public class DataUpdateService extends Service {
         return VRCUser.isLoggedIn();
     }
 
-    static public void showNotification(Context context, String comment, int id) {
+    static public void showNotification(Context context, String comment, int id) {  // Notification 띄워주는 함수
 
         // 현재시간을 msec 으로 구한다.
         long now = System.currentTimeMillis();
@@ -97,4 +119,5 @@ public class DataUpdateService extends Service {
         notificationManager.notify(id, n);
 
     }
+
 }

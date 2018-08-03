@@ -13,6 +13,26 @@
         android:title="@string/help"
         app:showAsAction="never" />
     <item
+        android:id="@+id/action_notiON"
+        android:orderInCategory="100"
+        android:title="@string/notiON"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_notiOFF"
+        android:orderInCategory="100"
+        android:title="@string/notiOFF"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_friendnotiON"
+        android:orderInCategory="100"
+        android:title="@string/friendNotiON"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_friendnotiOFF"
+        android:orderInCategory="100"
+        android:title="@string/friendNotiOFF"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"

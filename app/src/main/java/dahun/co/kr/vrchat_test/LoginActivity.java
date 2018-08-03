@@ -17,6 +17,7 @@ import android.widget.ImageView;
 
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
 
 import dahun.co.kr.vrchat_test.API.VRCUser;
 
@@ -94,7 +95,6 @@ public class LoginActivity extends AppCompatActivity {
 
         if (VRCUser.isLoggedIn() == false)
             return;
-
 
         SharedPreferences.Editor editor = shared.edit();
         editor.putString("id", idEditText.getText().toString());
