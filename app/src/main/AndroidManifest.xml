@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="vrchatapi.github.io.mobile">
+    package="dahun.co.kr.vrchat_test">
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/vrc_icon4"
+        android:icon="@drawable/notification_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="io.github.vrchatapi.mobile.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name="io.github.vrchatapi.mobile.LoginActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="io.github.vrchatapi.mobile.DataUpdateService"/>
+        <service android:name=".DataUpdateService"/>
         <receiver
-            android:name="io.github.vrchatapi.mobile.AutoRunBroadcastReceiver"
+            android:name=".AutoRunBroadcastReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>

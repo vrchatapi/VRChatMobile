@@ -1,7 +1,5 @@
 package dahun.co.kr.vrchat_test;
 
-import android.support.annotation.MainThread;
-
 public class ViewUpdateThread extends Thread {
     boolean runningFlag = true;
 

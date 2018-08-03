@@ -19,9 +19,10 @@ import android.view.MenuItem;
 
 import java.util.List;
 
+import dahun.co.kr.vrchat_test.API.VRCUser;
 import dahun.co.kr.vrchat_test.API.FriendStatus;
 import dahun.co.kr.vrchat_test.API.VRCFriends;
-import dahun.co.kr.vrchat_test.API.VRCUser;
+import dahun.co.kr.vrchat_test.R;
 
 /*
 현재 상황 -> TaskThread의 run에서 VRCWorld.fetch를 여러번 실행하는 부분이 있는데, fetch가 서버에 request를 보내고 받는 과정이 들어있어서 오래걸림. 즉, 사용자에게 있어 렉을 유발한다.
@@ -51,12 +52,13 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("접속한 친구 목록");
+        toolbar.setTitle(getString(R.string.connectFriendsList));
 
 
         setSupportActionBar(toolbar);
-
+        serviceIntent = new Intent(this, DataUpdateService.class);
 
         //Intent serviceIntent = new Intent(this, DataUpdateService.class);
         Log.i("2.friendsInfomation", "초기화 완료 : " + (DataUpdateService.updater.friendsInfomation == null ? "null" : "not null"));

@@ -11,6 +11,9 @@
     <string name="notiOFF">알림 기능 비활성화</string>
     <string name="friendNotiON">모든 친구 알림 켜기</string>
     <string name="friendNotiOFF">모든 친구 알림 끄기</string>
+    <string name="notification_Title">VRC 친구 상태갱신 서비스가 가동중입니다.</string>
+    <string name="notification_subTitle">중지하시려면 로그아웃 해야합니다</string>
+    <string name="connectFriendsList">접속한 친구 목록</string>
     <string name="help">사용설명</string>
     <string name="logout">로그아웃</string>
     <string name="feedback">피드백</string>

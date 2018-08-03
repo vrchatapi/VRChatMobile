@@ -2,17 +2,17 @@ package dahun.co.kr.vrchat_test;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import dahun.co.kr.vrchat_test.API.VRCUser;
@@ -35,7 +35,7 @@ public class DataUpdateService extends Service {
     public void onCreate() {    // 처음 생성될 떄 호출
         super.onCreate();
 
-
+        Log.i("DataUpdateService", "onCreate 호출");
 
         //friendsInfomation.clear();
         //Log.i("1.friendsInfomation", "초기화 완료 : " + (friendsInfomation == null?"null":"not null"));
@@ -55,6 +55,30 @@ public class DataUpdateService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {      //  startService 하면 호출
         //Toast.makeText(this, "서비스를 시작합니다.", Toast.LENGTH_SHORT).show();
+        startForeground(1,new Notification());
+
+        NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        Notification notification;
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
+
+            notification = new Notification.Builder(getApplicationContext())
+                    .setContentTitle(getString(R.string.notification_Title))
+                    .setContentText("< " + getString(R.string.notification_subTitle) + " >")
+                    .setContentIntent(pendingIntent)
+                    .setSmallIcon(R.drawable.notification_icon)
+                    .build();
+
+
+        }else{
+            notification = new Notification(0, "", System.currentTimeMillis());
+        }
+
+        nm.notify(startId, notification);
+
+
+
         Log.i("Thread run", "call run()");
         Log.i("LoginResult", "" + VRCUser.isLoggedIn());
 
@@ -110,7 +134,7 @@ public class DataUpdateService extends Service {
         Notification n = new Notification.Builder(context)
                 .setContentTitle(comment)
                 .setContentText("접속한 시간 : " + formatDate)
-                .setSmallIcon(R.drawable.vrc_icon4)
+                .setSmallIcon(R.drawable.notification_icon)
                 .setAutoCancel(true).build();
 
 

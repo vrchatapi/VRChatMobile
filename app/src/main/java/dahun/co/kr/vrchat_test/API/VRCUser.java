@@ -1,7 +1,5 @@
 package dahun.co.kr.vrchat_test.API;
 
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.util.Log;
 
 import java.util.ArrayList;

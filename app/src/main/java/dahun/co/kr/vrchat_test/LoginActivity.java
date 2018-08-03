@@ -1,6 +1,5 @@
 package dahun.co.kr.vrchat_test;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -8,18 +7,16 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
 
 import dahun.co.kr.vrchat_test.API.VRCUser;
+import dahun.co.kr.vrchat_test.R;
 
 import static dahun.co.kr.vrchat_test.UserInfomationAdapter.getRoundedCornerBitmap;
 
@@ -104,7 +101,8 @@ public class LoginActivity extends AppCompatActivity {
         Intent i = new Intent(LoginActivity.this, MainActivity.class);
         i.putExtra("id", idEditText.getText().toString());
         i.putExtra("pwd", pwdEditText.getText().toString());
-
+        DataUpdateThread.friendsInfomation.clear();
+        DataUpdateThread.notification_flag = false;
         startActivity(i);
         finish();
     }

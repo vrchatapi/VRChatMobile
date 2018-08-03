@@ -18,9 +18,9 @@ class DataUpdateThread extends Thread {
     static ArrayList<String> notificationList = new ArrayList<>();
 
     boolean updateFlag = true;
-    int num_notification = 0;
+    int num_notification = 2;
     static boolean notification_mode;  // <주의> notification을 사용할지에 대한 여부.
-    boolean notification_flag = false;  // <주의> 스레드가 처음 시작되어 friendsInfomation이 처음 불러와질 때에는 '접속하였습니다' 알림을 띄우면 안되기 때문에 플래그로 제어.
+    static boolean notification_flag = false;  // <주의> 스레드가 처음 시작되어 friendsInfomation이 처음 불러와질 때에는 '접속하였습니다' 알림을 띄우면 안되기 때문에 플래그로 제어.
     boolean runningFlag = true;
 
     public void terminate(){
