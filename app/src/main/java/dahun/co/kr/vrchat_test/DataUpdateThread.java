@@ -49,7 +49,7 @@ class DataUpdateThread extends Thread {
 
         while (runningFlag) {
 
-            for (int i = 0; i < 15; i++) {
+            for (int i = 0; i < 60; i++) {
                 if (!updateFlag) {
                     try {
                         Thread.sleep(1000);
