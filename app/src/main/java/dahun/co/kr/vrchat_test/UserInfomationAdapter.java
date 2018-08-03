@@ -84,6 +84,7 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
 
     UserInfomationAdapter(ArrayList<UserInfomation> startData, Context context){
         userData = startData;
+        Log.i("3.userData", "초기화 완료 : " + (userData == null?"null":"not null"));
         this.context = context;
     }
 
@@ -98,8 +99,7 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
     public void onBindViewHolder(@NonNull final UserInfomationViewHolder holder, final int position) {
         final UserInfomation showData = userData.get(position);
 
-        shared = context.getSharedPreferences(showData.getDisplayName(),Context.MODE_PRIVATE);
-        editor = shared.edit();
+
 /*
         if (!holder.ImageURL.equals(showData.getImageURI())) {
             Log.i("thumnailImage_Reloading", "position : " + position + ", " + showData.getDisplayName() + " : " + holder.ImageURL + " -> " + showData.getImageURI());
@@ -135,6 +135,9 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
         holder.itemLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                shared = context.getSharedPreferences(showData.getDisplayName(),Context.MODE_PRIVATE);
+                editor = shared.edit();
+
                 Log.i("SharedPreferences Task", context==null?"null":"not null");
                 final Dialog dlg = new Dialog(context);
                 dlg.setContentView(R.layout.memo_dialog);
