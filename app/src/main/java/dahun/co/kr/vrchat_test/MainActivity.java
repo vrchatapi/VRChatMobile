@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -143,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = DataUpdateService.context.getSharedPreferences(DataUpdateThread.SETTING_SAVE, MODE_PRIVATE).edit();
             editor.putBoolean(id + "notification_mode", true);
             editor.commit();
+            Toast.makeText(this, getString(R.string.notiON_comment), Toast.LENGTH_SHORT).show();
             return true;
         }
         if (itemId == R.id.action_notiOFF) {
@@ -150,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = DataUpdateService.context.getSharedPreferences(DataUpdateThread.SETTING_SAVE, MODE_PRIVATE).edit();
             editor.putBoolean(id + "notification_mode", false);
             editor.commit();
+            Toast.makeText(this, getString(R.string.notiOFF_comment), Toast.LENGTH_SHORT).show();
             return true;
         }
         if (itemId == R.id.action_friendnotiON) {
@@ -176,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
             t.start();
+            Toast.makeText(this, getString(R.string.friendNotiON_comment), Toast.LENGTH_SHORT).show();
             return true;
         }
         if (itemId == R.id.action_friendnotiOFF) {
@@ -183,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = DataUpdateService.context.getSharedPreferences(DataUpdateThread.SETTING_SAVE, MODE_PRIVATE).edit();
             editor.putInt(id + "notificationList_size", 0);
             editor.commit();
+            Toast.makeText(this, getString(R.string.friendNotiOFF_comment), Toast.LENGTH_SHORT).show();
             return true;
         }
         if (itemId == R.id.action_settings) {

@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25dp"
-        android:text="Unknown Translation"
+        android:text="@string/memo"
         android:layout_gravity="center"/>
 <LinearLayout
     android:layout_width="match_parent"
@@ -44,14 +44,14 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="차렷"
+            android:text="@string/nonVR"
             android:layout_margin="5dp"
             android:id="@+id/memo_vrRadioButton_novr"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="VR"
+            android:text="@string/VR"
             android:layout_margin="5dp"
             android:id="@+id/memo_vrRadioButton_vr"/>
     </RadioGroup>
