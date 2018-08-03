@@ -7,8 +7,8 @@
     <string name="save">Save</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
-    <string name="notiON">Notifications ON</string>
-    <string name="notiOFF">Notifications OFF</string>
+    <string name="notiON">App Notifications ON</string>
+    <string name="notiOFF">App Notifications OFF</string>
     <string name="friendNotiON">All friend notifications ON</string>
     <string name="friendNotiOFF">All friend notifications OFF</string>
     <string name="help">Help</string>
