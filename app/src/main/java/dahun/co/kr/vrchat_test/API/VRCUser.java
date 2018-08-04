@@ -182,5 +182,14 @@ public class VRCUser {
 	public String toString() {
 		return "VRCUser [Username: " + username + ", Displayname: " + displayName + "]";
 	}
+
+	static public void deleteFriend(String friendName){
+		JSONObject obj = ApiModel.sendRequest("auth/user/friends/" + friendName, "DELETE", null);
+		if (obj == null || !obj.has("success")) {
+			Log.i("VRCUser","friend delete failed");
+		}
+		else if (obj.has("success"))
+			Log.i("VRCUser","friend delete complete");
+	}
 	
 }

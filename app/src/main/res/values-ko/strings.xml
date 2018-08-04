@@ -14,6 +14,7 @@
     <string name="notification_Title">VRC 친구 상태갱신 서비스가 가동중입니다.</string>
     <string name="notification_subTitle">중지하시려면 로그아웃 해야합니다</string>
     <string name="connectFriendsList">접속한 친구 목록</string>
+    <string name="unconnectFriendsList">접속하지 않은 친구 목록</string>
     <string name="memo">m e m o</string>
     <string name="nonVR">차렷</string>
     <string name="VR">VR</string>
@@ -24,7 +25,8 @@
     <string name="developerName">개발자 이름 : 김다훈</string>
     <string name="developerVRChatID">VRChat ID : Gakka</string>
     <string name="developerContact">이메일 : ekgns0206@naver.com\n카카오톡 ID : ziudksod</string>
-    <string name="help">사용설명</string>
+    <string name="online">접속 중인 친구 보기</string>
+    <string name="offline">접속하지 않은 친구 보기</string>
     <string name="logout">로그아웃</string>
     <string name="feedback">피드백</string>
 </resources>

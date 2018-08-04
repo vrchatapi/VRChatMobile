@@ -27,8 +27,12 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
+import dahun.co.kr.vrchat_test.API.ApiModel;
+import dahun.co.kr.vrchat_test.API.VRCUser;
 import dahun.co.kr.vrchat_test.R;
 
 public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAdapter.UserInfomationViewHolder> {
@@ -77,6 +81,7 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
                 @Override
                 public boolean onMenuItemClick(MenuItem menuItem) {
                     // 친구를 삭제하는 코드를 입력하세요
+
                     return true;
                 }
             });
@@ -303,5 +308,7 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
         return output;
     }
 
-
+    public void setUserData(ArrayList<UserInfomation> userData) {
+        this.userData = userData;
+    }
 }

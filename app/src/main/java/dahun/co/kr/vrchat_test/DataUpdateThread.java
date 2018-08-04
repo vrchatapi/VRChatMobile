@@ -15,7 +15,10 @@ import dahun.co.kr.vrchat_test.API.VRCWorld;
 class DataUpdateThread extends Thread {
     public final static String SETTING_SAVE = "Application Setting";
     static ArrayList<UserInfomation> friendsInfomation = new ArrayList<>();
+    static ArrayList<UserInfomation> friendsInfomation_Offline = new ArrayList<>();
     static ArrayList<String> notificationList = new ArrayList<>();
+
+    static boolean showOnline = true;      // 현재 사용자한테 보여지는 것이 friendsInfomation인지, friendsInfomation_Offline를 구분.
 
     boolean updateFlag = true;
     int num_notification = 2;
@@ -64,6 +67,7 @@ class DataUpdateThread extends Thread {
             List<UserInfomation> copy_fi = (List<UserInfomation>) friendsInfomation.clone();
 
             final List<VRCUser> list_Friends = VRCFriends.fetchFriends(FriendStatus.ONLINE);
+            final List<VRCUser> list_Friends_Offline = VRCFriends.fetchFriends(FriendStatus.OFFLINE);
 
             //현재 상황 체크
 
@@ -124,10 +128,27 @@ class DataUpdateThread extends Thread {
                 //MainActivity.handler.sendEmptyMessage(0);
 
 
+
+
             }
             while (true) {
                 if (friendsInfomation.size() > list_Friends.size())
                     friendsInfomation.remove(list_Friends.size());
+                else break;
+            }
+
+            for (int i = 0; i < list_Friends_Offline.size(); i++) {
+
+                    if (friendsInfomation_Offline.size() > i)
+                        friendsInfomation_Offline.set(i, new UserInfomation(list_Friends_Offline.get(i).getCurrentAvatarThumbnailImageUrl(), list_Friends_Offline.get(i).getDisplayName().toString(), "offline", UserInfomation.loadingBitmap(list_Friends_Offline.get(i).getCurrentAvatarThumbnailImageUrl())));
+                    else
+                        friendsInfomation_Offline.add(new UserInfomation(list_Friends_Offline.get(i).getCurrentAvatarThumbnailImageUrl(), list_Friends_Offline.get(i).getDisplayName().toString(), "offline", UserInfomation.loadingBitmap(list_Friends_Offline.get(i).getCurrentAvatarThumbnailImageUrl())));
+
+
+            }
+            while (true) {
+                if (friendsInfomation_Offline.size() > list_Friends_Offline.size())
+                    friendsInfomation_Offline.remove(list_Friends_Offline.size());
                 else break;
             }
 

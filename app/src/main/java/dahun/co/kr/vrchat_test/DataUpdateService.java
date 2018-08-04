@@ -61,7 +61,7 @@ public class DataUpdateService extends Service {
         Notification notification;
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
-            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, (int)(System.currentTimeMillis()/1000), new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
             notification = new Notification.Builder(getApplicationContext())
                     .setContentTitle(getString(R.string.notification_Title))
@@ -74,6 +74,9 @@ public class DataUpdateService extends Service {
         }else{
             notification = new Notification(0, "", System.currentTimeMillis());
         }
+
+        notification.flags = Notification.FLAG_ONGOING_EVENT;
+
 
         nm.notify(startId, notification);
 

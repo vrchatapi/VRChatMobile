@@ -8,9 +8,14 @@
         android:title="@string/logout"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_help"
+        android:id="@+id/action_online"
         android:orderInCategory="100"
-        android:title="@string/help"
+        android:title="@string/online"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_offline"
+        android:orderInCategory="100"
+        android:title="@string/offline"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_notiON"

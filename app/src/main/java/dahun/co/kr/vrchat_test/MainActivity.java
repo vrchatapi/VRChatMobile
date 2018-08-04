@@ -24,13 +24,15 @@ import java.util.List;
 import dahun.co.kr.vrchat_test.API.VRCUser;
 import dahun.co.kr.vrchat_test.API.FriendStatus;
 import dahun.co.kr.vrchat_test.API.VRCFriends;
-import dahun.co.kr.vrchat_test.R;
 
 /*
 현재 상황 -> TaskThread의 run에서 VRCWorld.fetch를 여러번 실행하는 부분이 있는데, fetch가 서버에 request를 보내고 받는 과정이 들어있어서 오래걸림. 즉, 사용자에게 있어 렉을 유발한다.
 fetch를 최소한으로 사용하여 해결할 수 있도록 해보자. (173번 줄 부근)
  */
 public class MainActivity extends AppCompatActivity {
+    private final int FRAGMENT1 = 1;
+    private final int FRAGMENT2 = 2;
+
     static UserInfomationAdapter rvAdapter;
     static ViewUpdateThread viewUpdateThread = new ViewUpdateThread();
     Intent serviceIntent;
@@ -56,10 +58,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        DataUpdateThread.showOnline = true;
         toolbar.setTitle(getString(R.string.connectFriendsList));
 
 
         setSupportActionBar(toolbar);
+
+
         serviceIntent = new Intent(this, DataUpdateService.class);
 
         //Intent serviceIntent = new Intent(this, DataUpdateService.class);
@@ -75,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
             startService(serviceIntent);
         }
 
-        //viewUpdateThread.start();
 
         Intent i = getIntent();
         id = i.getStringExtra("id");
@@ -87,9 +92,12 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DataUpdateService.updater.update();
+                //DataUpdateService.updater.update();
+                handler.sendEmptyMessage(0);
             }
         });
+
+
     }
 
     @Override
@@ -137,9 +145,18 @@ public class MainActivity extends AppCompatActivity {
             finish();
             return true;
         }
-        if (itemId == R.id.action_help) {
-            Intent i = new Intent(this, HelpActivity.class);
-            startActivity(i);
+        if (itemId == R.id.action_online) {
+            rvAdapter.setUserData(DataUpdateService.updater.friendsInfomation);
+            DataUpdateThread.showOnline = true;
+            toolbar.setTitle(getString(R.string.connectFriendsList));
+            rvAdapter.notifyDataSetChanged();
+            return true;
+        }
+        if (itemId == R.id.action_offline) {
+            rvAdapter.setUserData(DataUpdateService.updater.friendsInfomation_Offline);
+            DataUpdateThread.showOnline = false;
+            toolbar.setTitle(getString(R.string.unconnectFriendsList));
+            rvAdapter.notifyDataSetChanged();
             return true;
         }
         if (itemId == R.id.action_notiON) {
@@ -217,6 +234,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
-
 
 }
