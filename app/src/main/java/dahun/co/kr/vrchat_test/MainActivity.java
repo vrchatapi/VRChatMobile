@@ -2,6 +2,7 @@ package dahun.co.kr.vrchat_test;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -137,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if (itemId == R.id.action_help) {
+            Intent i = new Intent(this, HelpActivity.class);
+            startActivity(i);
             return true;
         }
         if (itemId == R.id.action_notiON) {
@@ -194,6 +197,9 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if (itemId == R.id.action_feedback) {
+            Dialog dlg = new Dialog(this);
+            dlg.setContentView(R.layout.feedback_dialog);
+            dlg.show();
             return true;
         }
 

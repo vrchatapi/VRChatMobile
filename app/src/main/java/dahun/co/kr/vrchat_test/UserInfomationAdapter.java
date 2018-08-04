@@ -68,7 +68,6 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
                     editor = shared.edit();
                     editor.remove("sex");
                     editor.remove("vr");
-                    editor.remove("vr");
                     editor.remove("memo");
                     editor.commit();
                     return true;
@@ -182,6 +181,7 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
                 final Dialog dlg = new Dialog(context);
                 dlg.setContentView(R.layout.memo_dialog);
 
+                final TextView memo_tv_title = dlg.findViewById(R.id.memo_titleTextView);
                 final RadioButton memo_rb_male = dlg.findViewById(R.id.memo_sexRadioButton_male);
                 final RadioButton memo_rb_female = dlg.findViewById(R.id.memo_sexRadioButton_female);
                 final RadioButton memo_rb_novr = dlg.findViewById(R.id.memo_vrRadioButton_novr);
@@ -189,6 +189,9 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
                 final EditText memo_EditText = dlg.findViewById(R.id.memo_editText);
                 Button memo_cancelButton = dlg.findViewById(R.id.memo_cancelButton);
                 Button memo_saveButton = dlg.findViewById(R.id.memo_saveButton);
+
+                // title에 친구이름 세팅하기
+                memo_tv_title.setText(showData.getDisplayName());
 
                 // 성별 불러오기
                 if (shared.getString("sex","").equals("male"))

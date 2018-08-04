@@ -21,6 +21,9 @@
     <string name="notiOFF_comment">더 이상 친구접속 알림을 발생시키지 않습니다.</string>
     <string name="friendNotiON_comment">모든 친구의 접속 알림을 켰습니다.</string>
     <string name="friendNotiOFF_comment">모든 친구의 접속 알림을 껐습니다.</string>
+    <string name="developerName">개발자 이름 : 김다훈</string>
+    <string name="developerVRChatID">VRChat ID : Gakka</string>
+    <string name="developerContact">이메일 : ekgns0206@naver.com\n카카오톡 ID : ziudksod</string>
     <string name="help">사용설명</string>
     <string name="logout">로그아웃</string>
     <string name="feedback">피드백</string>
