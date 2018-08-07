@@ -22,7 +22,7 @@
         android:background="@drawable/blue_border"
         android:layout_gravity="center_horizontal"
         android:id="@+id/login_idEditText"
-        android:hint="username"/>
+        android:hint="Username"/>
 
     <EditText
         android:layout_width="300dp"
@@ -34,7 +34,7 @@
         android:background="@drawable/blue_border"
         android:layout_gravity="center_horizontal"
         android:id="@+id/login_pwdEditText"
-        android:hint="passwrd"
+        android:hint="Password"
         android:inputType="textPassword"/>
 
     <Button
