@@ -48,7 +48,7 @@ public class ApiModel {
 		return sendRequest(endpoint, "put", requestParams);
 	}
 	
-	protected static JSONObject sendRequest(String endpoint, String method, Map<String, Object> requestParams) {
+	public static JSONObject sendRequest(String endpoint, String method, Map<String, Object> requestParams) {
 		if(requestParams != null && requestParams.size() == 0) requestParams = null;
 
 		JSONObject resp = null;

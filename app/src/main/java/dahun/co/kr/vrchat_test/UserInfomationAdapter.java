@@ -26,12 +26,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import dahun.co.kr.vrchat_test.API.ApiModel;
+import dahun.co.kr.vrchat_test.API.FriendStatus;
+import dahun.co.kr.vrchat_test.API.VRCFriends;
 import dahun.co.kr.vrchat_test.API.VRCUser;
 import dahun.co.kr.vrchat_test.R;
 
@@ -64,11 +68,11 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
             //contextMenu.setHeaderTitle("");
             // 밑 줄이 누른 곳에 써있는 displayName 가져오는법.
             //((TextView)(view.findViewById(R.id.displayName_textView))).getText().toString();
-            Log.i("view_info", "" + ((TextView)(view.findViewById(R.id.displayName_textView))).getText().toString());
+            Log.i("view_info", "" + ((TextView) (view.findViewById(R.id.displayName_textView))).getText().toString());
             contextMenu.add(0, view.getId(), 0, "메모 초기화").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem menuItem) {
-                    shared = context.getSharedPreferences(((TextView)(view.findViewById(R.id.displayName_textView))).getText().toString(), Context.MODE_PRIVATE);
+                    shared = context.getSharedPreferences(((TextView) (view.findViewById(R.id.displayName_textView))).getText().toString(), Context.MODE_PRIVATE);
                     editor = shared.edit();
                     editor.remove("sex");
                     editor.remove("vr");
@@ -82,15 +86,80 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
                 public boolean onMenuItemClick(MenuItem menuItem) {
                     // 친구를 삭제하는 코드를 입력하세요
 
+                        Thread t = new Thread() {
+                            @Override
+                            public void run() {
+                                try {
+                                    String userName = "";
+                                    int i;
+                                    String clickedName = ((TextView) (view.findViewById(R.id.displayName_textView))).getText().toString();
+                                    Log.i("DeleteProcess", "clickedName = " + clickedName);
+                                    List<VRCUser> friends_list = VRCFriends.fetchFriends();
+                                    List<VRCUser> friends_list_offline = VRCFriends.fetchFriends(FriendStatus.OFFLINE);
+                                    Log.i("DeleteProcess", "검색 시작 -> " + userName);
+
+                                    if (DataUpdateThread.showOnline == true) {
+                                        for (i = 0; i < friends_list.size(); i++) {
+                                            if (friends_list.get(i).getDisplayName().equals(clickedName)) {
+                                                Log.i("DeleteProcess", "friends_list.get(" + i + ") = " + friends_list.get(i).getUsername());
+                                                userName = friends_list.get(i).getUsername();
+                                                if (friends_list.get(i).getDisplayName().equals(DataUpdateThread.friendsInfomation.get(i).getDisplayName())){
+                                                    DataUpdateThread.friendsInfomation.remove(i);
+                                                    MainActivity.handler.sendEmptyMessage(0);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else{
+                                        for (i = 0; i < friends_list_offline.size(); i++) {
+                                            if (friends_list_offline.get(i).getDisplayName().equals(clickedName)) {
+                                                Log.i("DeleteProcess", "friends_list_offline.get(" + i + ") = " + friends_list_offline.get(i).getUsername());
+                                                userName = friends_list_offline.get(i).getUsername();
+                                                if (friends_list_offline.get(i).getDisplayName().equals(DataUpdateThread.friendsInfomation_Offline.get(i).getDisplayName())){
+                                                    DataUpdateThread.friendsInfomation_Offline.remove(i);
+                                                    MainActivity.handler.sendEmptyMessage(0);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    Log.i("DeleteProcess", "검색 끝 -> " + userName);
+
+                                    String id = ApiModel.sendGetRequest("users/" + userName + "/name", null).getString("id");
+
+                                    Log.i("DeleteProcess", "id 뽑은 결과 -> " + id);
+
+                                    JSONObject obj = ApiModel.sendRequest("auth/user/friends/" + id, "DELETE", null);
+                                    if (obj == null) {
+                                        Log.i("DeleteProcess", "obj = null");
+                                    } else if (obj.has("success")) {
+                                        Log.i("DeleteProcess", "obj = success");
+                                        DataUpdateService.updater.update();
+                                    } else if (obj.has("error")) {
+                                        Log.i("DeleteProcess", "obj = error");
+                                    }
+                                }
+                                catch(Exception e){
+
+                                }
+                            }
+                        };
+
+                        t.start();
+                    try {
+                        t.join();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                     return true;
                 }
             });
 
-            if (!DataUpdateThread.notificationList.contains(((TextView)(view.findViewById(R.id.displayName_textView))).getText().toString())) {
+            if (!DataUpdateThread.notificationList.contains(((TextView) (view.findViewById(R.id.displayName_textView))).getText().toString())) {
                 contextMenu.add(2, view.getId(), 0, "접속 알림 켜기").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
-                        DataUpdateThread.notificationList.add(((TextView)(view.findViewById(R.id.displayName_textView))).getText().toString());
+                        DataUpdateThread.notificationList.add(((TextView) (view.findViewById(R.id.displayName_textView))).getText().toString());
                         // NotificationList에 displayName 집어넣기.
                         Log.i("notificationList", DataUpdateThread.notificationList.toString());
                         SharedPreferences.Editor editor = DataUpdateService.context.getSharedPreferences(DataUpdateThread.SETTING_SAVE, Context.MODE_PRIVATE).edit();
@@ -102,12 +171,11 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
                         return true;
                     }
                 });
-            }
-            else {
+            } else {
                 contextMenu.add(3, view.getId(), 0, "접속 알림 끄기").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
-                        DataUpdateThread.notificationList.remove(((TextView)(view.findViewById(R.id.displayName_textView))).getText().toString());
+                        DataUpdateThread.notificationList.remove(((TextView) (view.findViewById(R.id.displayName_textView))).getText().toString());
                         // NotificationList에서 displayName 삭제하기
                         Log.i("notificationList", DataUpdateThread.notificationList.toString());
                         SharedPreferences.Editor editor = DataUpdateService.context.getSharedPreferences(DataUpdateThread.SETTING_SAVE, Context.MODE_PRIVATE).edit();
@@ -126,9 +194,9 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
 
     }
 
-    UserInfomationAdapter(ArrayList<UserInfomation> startData, Context context){
+    UserInfomationAdapter(ArrayList<UserInfomation> startData, Context context) {
         userData = startData;
-        Log.i("3.userData", "초기화 완료 : " + (userData == null?"null":"not null"));
+        Log.i("3.userData", "초기화 완료 : " + (userData == null ? "null" : "not null"));
         this.context = context;
     }
 
@@ -143,35 +211,6 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
     public void onBindViewHolder(@NonNull final UserInfomationViewHolder holder, final int position) {
         final UserInfomation showData = userData.get(position);
 
-
-/*
-        if (!holder.ImageURL.equals(showData.getImageURI())) {
-            Log.i("thumnailImage_Reloading", "position : " + position + ", " + showData.getDisplayName() + " : " + holder.ImageURL + " -> " + showData.getImageURI());
-            holder.ImageURL = showData.getImageURI();
-            Thread t = new Thread(new Runnable() {
-                @Override
-                public void run() {    // 오래 거릴 작업을 구현한다
-                    // TODO Auto-generated method stub
-                    try {
-                        URL url = new URL(showData.getImageURI());
-                        InputStream is = url.openStream();
-                        holder.bm = BitmapFactory.decodeStream(is);
-                        holder.bm = getRoundedCornerBitmap(holder.bm, 100);
-                        holder.thumnailImageView.setImageBitmap(holder.bm); //비트맵 객체로 보여주기
-
-                    } catch (Exception e) {
-
-                    }
-
-                }
-            });
-            //holder.thumnailImageView.setImageBitmap(null);
-            t.start();
-        }
-        else {
-            //holder.thumnailImageView.setImageBitmap(holder.bm); //비트맵 객체로 보여주기
-        }
-        */
         holder.thumnailImageView.setImageBitmap(showData.getImageBitmap());
         holder.displayNameTextView.setText(showData.getDisplayName());
         holder.locationTextView.setText(showData.getLocation());
@@ -179,10 +218,10 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
         holder.itemLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                shared = context.getSharedPreferences(showData.getDisplayName(),Context.MODE_PRIVATE);
+                shared = context.getSharedPreferences(showData.getDisplayName(), Context.MODE_PRIVATE);
                 editor = shared.edit();
 
-                Log.i("SharedPreferences Task", context==null?"null":"not null");
+                Log.i("SharedPreferences Task", context == null ? "null" : "not null");
                 final Dialog dlg = new Dialog(context);
                 dlg.setContentView(R.layout.memo_dialog);
 
@@ -199,9 +238,9 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
                 memo_tv_title.setText(showData.getDisplayName());
 
                 // 성별 불러오기
-                if (shared.getString("sex","").equals("male"))
+                if (shared.getString("sex", "").equals("male"))
                     memo_rb_male.setChecked(true);
-                else if (shared.getString("sex","").equals("female"))
+                else if (shared.getString("sex", "").equals("female"))
                     memo_rb_female.setChecked(true);
                 else {
                     memo_rb_male.setChecked(false);
@@ -209,9 +248,9 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
                 }
 
                 // vr 불러오기
-                if (shared.getString("vr","").equals("novr"))
+                if (shared.getString("vr", "").equals("novr"))
                     memo_rb_novr.setChecked(true);
-                else if (shared.getString("vr","").equals("vr"))
+                else if (shared.getString("vr", "").equals("vr"))
                     memo_rb_vr.setChecked(true);
                 else {
                     memo_rb_novr.setChecked(false);
@@ -219,7 +258,7 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
                 }
 
                 // memo 불러오기
-                memo_EditText.setText(shared.getString("memo",""));
+                memo_EditText.setText(shared.getString("memo", ""));
 
 
                 memo_cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -273,17 +312,14 @@ public class UserInfomationAdapter extends RecyclerView.Adapter<UserInfomationAd
         return userData.size();
     }
 
-    private void setAnimation(View viewToAnimate, int position)
-    {
+    private void setAnimation(View viewToAnimate, int position) {
         // If the bound view wasn't previously displayed on screen, it's animated
-        if (position > lastPosition)
-        {
+        if (position > lastPosition) {
             Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
             viewToAnimate.startAnimation(animation);
             lastPosition = position;
         }
     }
-
 
 
     public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int pixels) {

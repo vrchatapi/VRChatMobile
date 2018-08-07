@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         rv_Friends = findViewById(R.id.friends_recycler);
         rv_Friends.setLayoutManager(new LinearLayoutManager(this));
         rv_Friends.setAdapter(rvAdapter);
+        rvAdapter.notifyDataSetChanged();
 
         if (!isServiceRunningCheck("dahun.co.kr.vrchat_test", "DataUpdateService")) {   // 이거 제대로 되고있는거 맞나...?
             serviceIntent = new Intent(this, DataUpdateService.class);
@@ -111,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
         if (viewUpdateThread.isAlive())
             viewUpdateThread.terminate();
         Log.i("ViewUpdateThread", "종료");

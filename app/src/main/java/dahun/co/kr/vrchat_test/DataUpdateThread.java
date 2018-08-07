@@ -154,6 +154,9 @@ class DataUpdateThread extends Thread {
 
             Log.i("before DataList Size", "" + copy_fi.size());
             Log.i("after DataList Size", "" + friendsInfomation.size());
+
+            MainActivity.handler.sendEmptyMessage(0);
+
             if (notification_mode == true) {
                 if (notification_flag == true) {
                     for (int i = 0; i < friendsInfomation.size(); i++) {
