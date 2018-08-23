@@ -1,4 +1,6 @@
-
+ul, menu, dir {
+	list-style-type: none;
+}
 #title{
 	position: absolute;
 	left:10px;
@@ -28,6 +30,8 @@ float:left
 	padding-top: 15px;
 	width: 99%;
 	padding-right: 20%;
+	list-style-position: none;
+	list-style-type: none;
 
 
 }
@@ -40,7 +44,7 @@ img {
 	border-radius: 50%;
 }
 ul li,ol li {
-list-style-position: outside;
+list-style-position: none;
 margin-top: 5px;
 }
 #onfr{
@@ -66,6 +70,8 @@ a{
 a:hover{
 	color:#5555FF;
 }
+
 #friends {
-	padding-bottom: 5px;
+	    position: relative;
+    right: 26px;
 }
