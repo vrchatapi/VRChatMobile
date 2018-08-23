@@ -27,9 +27,13 @@ SOFTWARE.
 
 # Building for yourself
 `$ npm install `
+
 `$ npm -g install cordova `
+
 `$ cordova add platform <android|ios|blackberry|windows> `
+
 `$ cordova build <android|ios|blackberry|windows> `
+
 This will build a apk for you to deploy or if you have adb installed on your pc will deploy it to your phone
 
 Note - Android Studio, Java jre|jdk & nodejs need to be installed
