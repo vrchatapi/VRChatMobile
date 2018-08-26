@@ -12,7 +12,8 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<script src="jquery-1.12.4.min.js"></script>
-		<script src="main.js"></script>
+		<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 		<script src="popup.js"></script>
 		<link rel="stylesheet" type="text/css" href="popup.css">
 
@@ -34,9 +35,7 @@
 					<nav id="menu">
 						<ul class="actions stacked">
 							<li>
-								
-								<div id="userpanel">
-								</div>	
+								<li><a id="profile" href="profile.html" class="button fit">My Profile</a></li>
 
 								<div id="loginpanel">
 									<div>
@@ -52,10 +51,13 @@
 								</div>
 							</li>
 							<li><a id="logout" class="button fit">Logout</a></li>
-							<li><a href="#settings" class="button fit">Settings</a></li>
+							<li><a href="#settings" class="button fit">Settings(Coming Soon)</a></li>
 							<li>
 								<a>Version 1.1B</a>
 							</li>
+							<li>
+							<div id="google_translate_element"></div>
+						</li>
 						</ul>
 					</nav>
 					
@@ -91,6 +93,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="main.js"></script>
 
 	</body>
 </html>

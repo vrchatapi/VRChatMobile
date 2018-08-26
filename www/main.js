@@ -106,7 +106,7 @@ function reqKey(success,error){
 function setUserdata(data){
 	localStorage["token"] = data["authToken"];
 	localStorage["user_icon_url"] = data["currentAvatarThumbnailImageUrl"];
-	localStorage["user_name"] = data["displayName"];
+	localStorage["user_name"] = data["displayName"].length;
 	localStorage["friends_num"] = data["friends"].length;
 	console.log(data);
 }
@@ -115,12 +115,13 @@ function showInfo(data){
 	console.log("xxxx showInfo");
 	var icon = localStorage["user_icon_url"];
 	var name = localStorage["user_name"];
-	var fr_num=localStorage["friends_num"];
+	var fr_num = localStorage["friends_num"];
+	console.log(name)
 
 	var $img = $("<img>").attr({src: icon,id:"myicon"});
-	var $name= $("<div>").text(name);
+	var $name= $("<div>").text("N/A");
 	var $onfr   = $("<div>").attr({id:"onfr" ,title:"onlinefriends"});
-	var $allfr  = $("<div>").attr({id:"allfr",title:"allfriends"}).text(" / " + fr_num + " friends");
+	var $allfr  = $("<div>").attr({id:"allfr",title:"allfriends"}).text(" Online Friends");
 	$("#userpanel").empty().append($img).append($name).append($onfr).append($allfr);
 
 
@@ -174,7 +175,7 @@ function showfriends(data){
 				src:val["currentAvatarThumbnailImageUrl"],
 				align:"middle"
 			});
-			console.log("****name ",val["displayName"]);
+			console.log("name ",val["displayName"]);
 			var worldid = worldId(val["location"]);
 			var instanceid = instanceId(val["location"]);
 
@@ -323,7 +324,7 @@ function login(){
 					//�ł��Ȃ�������token���Â��Ƃ������ƂȂ̂�reqtoken�ōX�V����
 					reqToken(
 						(data)=>{
-							//�擾�ɐ���������setUserdata���ĕ\��
+							//setUserdata(data);
 							loginsuccess(data);
 						},()=>{
 							//�擾�Ɏ��s�������\��error:���O�C���ł��܂����ł���
@@ -355,6 +356,7 @@ function logout(){
 	$("#loginpanel").show();
 	$("#friendspanel").hide();
 	$("#userpanel").hide();
+	$("#profile").hide();
 	loginstatusclear();
 	backgroundsend("logout");
 }
