@@ -121,7 +121,7 @@ function showInfo(data){
 	var $img = $("<img>").attr({src: icon,id:"myicon"});
 	var $name= $("<div>").text("N/A");
 	var $onfr   = $("<div>").attr({id:"onfr" ,title:"onlinefriends"});
-	var $allfr  = $("<div>").attr({id:"allfr",title:"allfriends"}).text(" Online Friends");
+	var $allfr  = $("<div>").attr({id:"allfr",title:"allfriends"}).text(" Friends");
 	$("#userpanel").empty().append($img).append($name).append($onfr).append($allfr);
 
 
