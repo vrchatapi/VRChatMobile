@@ -34,14 +34,21 @@ float:left
 	list-style-type: none;
 
 
+
 }
 img {
     border-radius: 50%;
+    
 }
 
 .c_img{
 	float:left;
 	border-radius: 50%;
+	padding-right: 10%;
+	padding-top :5%;
+	padding-left: 5%;
+
+
 }
 ul li,ol li {
 list-style-position: none;
@@ -66,6 +73,7 @@ margin-top: 5px;
 }
 a{
 	color:#FFF;
+	padding-left: 27%;
 }
 a:hover{
 	color:#5555FF;
@@ -74,4 +82,8 @@ a:hover{
 #friends {
 	    position: relative;
     right: 26px;
+    padding-left: 27%;
+}
+#displayNamestyle{
+	    padding-left: 27%;
 }

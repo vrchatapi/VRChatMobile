@@ -106,22 +106,21 @@ function reqKey(success,error){
 function setUserdata(data){
 	localStorage["token"] = data["authToken"];
 	localStorage["user_icon_url"] = data["currentAvatarThumbnailImageUrl"];
-	localStorage["user_name"] = data["displayName"].length;
+	localStorage["api_username"] = data["displayName"];
 	localStorage["friends_num"] = data["friends"].length;
 	console.log(data);
 }
 function showInfo(data){
 	$("#userpanel").show();
-	console.log("xxxx showInfo");
+	console.log("Loading User Data");
 	var icon = localStorage["user_icon_url"];
-	var name = localStorage["user_name"];
+	var name = localStorage["user"];
 	var fr_num = localStorage["friends_num"];
-	console.log(name)
 
 	var $img = $("<img>").attr({src: icon,id:"myicon"});
-	var $name= $("<div>").text("N/A");
+	var $name = $("<div>").text("logged in as " + name);
 	var $onfr   = $("<div>").attr({id:"onfr" ,title:"onlinefriends"});
-	var $allfr  = $("<div>").attr({id:"allfr",title:"allfriends"}).text(" Friends");
+	var $allfr  = $("<div>").attr({id:"allfr",title:"allfriends"}).text(" / " + fr_num + " friends");
 	$("#userpanel").empty().append($img).append($name).append($onfr).append($allfr);
 
 
@@ -133,9 +132,10 @@ function reqToken(success,error){
 	var p = getPassword();
 	var k = getClientapikey();
 
-	sendReqCommand({user:u,pass:p,key:k,type:"basic"},"auth/user",(data)=>{
+	sendReqCommand({user:u,pass:p,key:k,type:"auth"},"auth/user",(data)=>{
 		setUserdata(data);
 		success(data);
+		console.log("connected")
 	},error);
 }
 function fetchOnlinedata(success){
@@ -175,7 +175,7 @@ function showfriends(data){
 				src:val["currentAvatarThumbnailImageUrl"],
 				align:"middle"
 			});
-			console.log("name ",val["displayName"]);
+			console.log("****name ",val["displayName"]);
 			var worldid = worldId(val["location"]);
 			var instanceid = instanceId(val["location"]);
 
@@ -190,7 +190,7 @@ function showfriends(data){
 			$("#friends").append($newli);
 
 	});
-}
+ }
 function preset_in(str){
 	return " in " + str;
 }
@@ -324,7 +324,7 @@ function login(){
 					//�ł��Ȃ�������token���Â��Ƃ������ƂȂ̂�reqtoken�ōX�V����
 					reqToken(
 						(data)=>{
-							//setUserdata(data);
+							//�擾�ɐ���������setUserdata���ĕ\��
 							loginsuccess(data);
 						},()=>{
 							//�擾�Ɏ��s�������\��error:���O�C���ł��܂����ł���
@@ -356,7 +356,6 @@ function logout(){
 	$("#loginpanel").show();
 	$("#friendspanel").hide();
 	$("#userpanel").hide();
-	$("#profile").hide();
 	loginstatusclear();
 	backgroundsend("logout");
 }
