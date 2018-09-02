@@ -106,21 +106,21 @@ function reqKey(success,error){
 function setUserdata(data){
 	localStorage["token"] = data["authToken"];
 	localStorage["user_icon_url"] = data["currentAvatarThumbnailImageUrl"];
-	localStorage["api_username"] = data["displayName"];
+	localStorage["user_name"] = data["displayName"];
 	localStorage["friends_num"] = data["friends"].length;
 	console.log(data);
 }
 function showInfo(data){
 	$("#userpanel").show();
-	console.log("Loading User Data");
+	console.log("xxxx showInfo");
 	var icon = localStorage["user_icon_url"];
 	var name = localStorage["user"];
-	var fr_num = localStorage["friends_num"];
+	var fr_num=localStorage["friends_num"];
 
 	var $img = $("<img>").attr({src: icon,id:"myicon"});
-	var $name = $("<div>").text("logged in as " + name);
+	var $name= $("<div>").text(name);
 	var $onfr   = $("<div>").attr({id:"onfr" ,title:"onlinefriends"});
-	var $allfr  = $("<div>").attr({id:"allfr",title:"allfriends"}).text(" / " + fr_num + " friends");
+	var $allfr  = $("<div>").attr({id:"allfr",title:"allfriends"}).text( " friends");
 	$("#userpanel").empty().append($img).append($name).append($onfr).append($allfr);
 
 
@@ -132,10 +132,9 @@ function reqToken(success,error){
 	var p = getPassword();
 	var k = getClientapikey();
 
-	sendReqCommand({user:u,pass:p,key:k,type:"auth"},"auth/user",(data)=>{
+	sendReqCommand({user:u,pass:p,key:k,type:"basic"},"auth/user",(data)=>{
 		setUserdata(data);
 		success(data);
-		console.log("connected")
 	},error);
 }
 function fetchOnlinedata(success){
@@ -190,7 +189,7 @@ function showfriends(data){
 			$("#friends").append($newli);
 
 	});
- }
+}
 function preset_in(str){
 	return " in " + str;
 }
@@ -356,6 +355,8 @@ function logout(){
 	$("#loginpanel").show();
 	$("#friendspanel").hide();
 	$("#userpanel").hide();
+	$("#menu").hide();
+	$("#profile").hide();
 	loginstatusclear();
 	backgroundsend("logout");
 }

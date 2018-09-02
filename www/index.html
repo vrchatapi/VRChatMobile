@@ -13,9 +13,26 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<script src="jquery-1.12.4.min.js"></script>
 		<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-		<script src="popup.js"></script>
 		<link rel="stylesheet" type="text/css" href="popup.css">
+		<script src="pulltorefresh.js/dist/pulltorefresh.js" type="text/javascript"></script>
+<script type='text/javascript'>
+
+// Initialize 
+PullToRefresh.init({
+ mainElement: 'body',
+ distThreshold: 120,
+ distMax: 140,
+ distReload: 110,
+ triggerElement: '#friendspanel',
+ instructionsPullToRefresh: 'Pull down to refresh the page',
+ instructionsReleaseToRefresh: 'Release to refresh the page',
+ instructionsRefreshing: 'Refreshing the page',
+ refreshTimeout: 2000,
+ onRefresh: function(){ 
+  alert("Refresh");
+ }
+});
+</script>
 
 	</head>
 	<body class="is-preload">
@@ -37,23 +54,12 @@
 							<li>
 								<li><a id="profile" href="profile.html" class="button fit">My Profile</a></li>
 
-								<div id="loginpanel">
-									<div>
-										<div class="info">username:</div><input type="text" id="username" size="20"></input>
-									</div>
-									<div>
-										<div class="info">password:</div><input type="password" id="password" size="20"></input>
-									</div>
-									<div>
-										<button type="button" id="login">LOGIN</button>
-									</div>
-									<hr />
-								</div>
+								
 							</li>
 							<li><a id="logout" class="button fit">Logout</a></li>
 							<li><a href="#settings" class="button fit">Settings(Coming Soon)</a></li>
 							<li>
-								<a>Version 1.1B</a>
+								<h1>Version 1.1.</h1>
 							</li>
 							<li>
 							<div id="google_translate_element"></div>
@@ -66,14 +72,39 @@
 
 				<!-- Main -->
 					<div id="main">
+						<div class="actions stacked" id="loginpanel">
+									<div>
+										<div class="info">username:</div><input type="text" id="username" size="20"></input>
+									</div>
+									<div>
+										<div class="info">password:</div><input type="password" id="password" size="20"></input>
+									</div>
+									<div>
+										<button type="button" id="login">LOGIN</button>
+									</div>
+									<hr />
+								</div>
+						<div id="userpanel">
+						
+						</div>
 
 						<div id="friendspanel">
 							<ul id="friends" style="
-    position: relative;
-    right: 2.5%;
-    padding-top: 1%;
-">
+   									 position: relative;
+    								 right: 2.8%;
+    								 padding-top: 0%;
+    								 font-size: 15px;
+    								 width: 100%
+									">
 							</ul>
+							<div id="loading"><img  src="loading.gif" style="
+									position: relative;
+									height: 80px;
+									width: 80px;
+									left: 	38%;
+									top: 	50%;
+									"
+							/></div>
 						</div>
 					</div>
 
@@ -94,6 +125,7 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script src="main.js"></script>
+			<script src="popup.js"></script>
 
 	</body>
 </html>
