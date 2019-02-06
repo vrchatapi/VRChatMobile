@@ -91,21 +91,6 @@
             ]
         },
         {
-            "outputFile": "/home/rox/Desktop/VRChatMobile/platforms/android/app/build/intermediates/res/merged/release/values-port_values-port.arsc.flat",
-            "map": [
-                {
-                    "source": "/home/rox/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/1a68ff7cc13285440b9e5343412617b2/res/values-port/values-port.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "55",
-                        "endOffsets": "106"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/home/rox/Desktop/VRChatMobile/platforms/android/app/build/intermediates/res/merged/release/values-sw_values-sw.arsc.flat",
             "map": [
                 {
@@ -191,6 +176,21 @@
                         "startOffsets": "105,211,399,526,637,859,986,1135,1483,1707,1815,2000,2129,2338,2527,2625,2730",
                         "endColumns": "105,187,126,110,221,126,148,142,223,107,184,128,208,188,97,104,124",
                         "endOffsets": "206,394,521,632,854,981,1130,1273,1702,1810,1995,2124,2333,2522,2620,2725,2850"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/home/rox/Desktop/VRChatMobile/platforms/android/app/build/intermediates/res/merged/release/values-port_values-port.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/rox/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/1a68ff7cc13285440b9e5343412617b2/res/values-port/values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
                     }
                 }
             ]

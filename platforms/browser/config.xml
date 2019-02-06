@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.roxyboxxy.vrchatmobile" version="1.2.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>VRChatMobile</name>
+    <description>
+        A simple tool for managing your friends and account for VRChat.
+    </description>
+    <author email="dev@cordova.apache.org" href="https://vrchap.net/mobile/">
+        The VRChap Team
+    </author>
+    <content src="index.html" />
+    <icon density="xhdpi" height="57" platform="android" src="res/icon/android/icon-96-xhdpi.png" width="57" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+</widget>

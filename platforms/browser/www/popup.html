@@ -1,0 +1,46 @@
+<html>
+<head>
+<script src="jquery-1.12.4.min.js"></script>
+<script src="main.js"></script>
+<script src="popup.js"></script>
+<link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+<div id="title">VRC notification</div>
+<div id="credits">created by <a target="_blank" href="https://twitter.com/xuarx">@lowteq</a></div>
+<hr />
+<div id="logoutpanel">
+	<button type="button" id="logout">LOGOUT</button>
+</div>
+
+<div id="loginpanel">
+	<div>
+		<div class="info">username:</div><input type="text" id="username" size="20"></input>
+	</div>
+	<div>
+		<div class="info">password:</div><input type="password" id="password" size="20"></input>
+	</div>
+	<div>
+		<button type="button" id="login">LOGIN</button>
+	</div>
+	<hr />
+</div>
+
+<div id="userpanel">
+</div>
+<hr />
+<div id="toolpanel">
+<input id="soundenable" type="checkbox" checked="checked" ></input>sound<input type="range" id="soundvolume"><br />
+<input id="notificationenable" type="checkbox" checked="checked"></input>notification
+
+</div>
+<hr />
+<div id="friendspanel">
+
+<ul id="friends">
+</ul>
+
+</div>
+
+</body>
+</html>

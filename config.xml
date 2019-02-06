@@ -24,4 +24,5 @@
     <plugin name="cordova-plugin-appversion" spec="^1.0.0" />
     <engine name="android" spec="^7.1.4" />
     <engine name="windows" spec="^5.0.0" />
+    <engine name="browser" spec="^5.0.4" />
 </widget>

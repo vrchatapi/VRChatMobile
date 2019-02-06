@@ -1,0 +1,44 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-appversion": {
+      "PACKAGE_NAME": "com.roxyboxxy.vrchatmobile"
+    },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "com.roxyboxxy.vrchatmobile"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.roxyboxxy.vrchatmobile"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "file": "plugins/cordova-plugin-appversion/www/app-version.js",
+      "id": "cordova-plugin-appversion.RareloopAppVersion",
+      "pluginId": "cordova-plugin-appversion",
+      "clobbers": [
+        "AppVersion"
+      ]
+    },
+    {
+      "file": "plugins/cordova-plugin-firebase/www/firebase-browser.js",
+      "id": "cordova-plugin-firebase.FirebasePlugin",
+      "pluginId": "cordova-plugin-firebase",
+      "clobbers": [
+        "FirebasePlugin"
+      ]
+    }
+  ],
+  "plugin_metadata": {
+    "cordova-plugin-appversion": "1.0.0",
+    "cordova-plugin-firebase": "1.0.5",
+    "cordova-plugin-whitelist": "1.3.3"
+  }
+}

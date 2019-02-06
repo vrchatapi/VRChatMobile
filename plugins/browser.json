@@ -1,0 +1,21 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-appversion": {
+      "PACKAGE_NAME": "com.roxyboxxy.vrchatmobile"
+    },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "com.roxyboxxy.vrchatmobile"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.roxyboxxy.vrchatmobile"
+    }
+  },
+  "dependent_plugins": {}
+}

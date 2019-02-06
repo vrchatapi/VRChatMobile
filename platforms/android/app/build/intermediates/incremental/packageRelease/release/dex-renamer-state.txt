@@ -1,4 +1,4 @@
-#Mon Feb 04 04:10:09 PST 2019
+#Wed Feb 06 13:49:09 PST 2019
 base.0=/home/rox/Desktop/VRChatMobile/platforms/android/app/build/intermediates/transforms/dex/release/0
 path.0=classes.dex
 renamed.0=classes.dex
