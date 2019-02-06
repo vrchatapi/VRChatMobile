@@ -9,8 +9,10 @@ ul, menu, dir {
 }
 
 .info{
-width:60px;
-float:left
+	width:60px;
+	float:left;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 #myicon{
 	width:60px;
@@ -97,4 +99,31 @@ a:hover{
 	left: 50%;
 	height: 80px;
 	width: 80px;
+	visibility: hidden;
+}
+#logindiv {
+	width: 62%;
+    position: relative;
+    left: 20%;
+    padding-top: 46%;
+}
+#login {
+	position: fixed;
+    bottom: 28%;
+    left: 38%;
+}
+#username {
+	box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
+}
+#password {
+	box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
+}
+
+.header {
+	position: fixed;
+    background: #242943;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
+}
+#main {
+	padding-top: 3%;
 }

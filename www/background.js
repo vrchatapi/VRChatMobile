@@ -6,7 +6,7 @@ var observerTimer;
 var beforefriendsData = [];
 
 var sound = new Audio("sound01.mp3");
-
+// but its broken to hell
 function comparedata(data1,data2){
 
 	console.log(data1);
@@ -110,26 +110,5 @@ function localStorageinit(){
 	}
 }
 
-chrome.runtime.onMessage.addListener(function(request,sender){
-	console.log("ONMESSAGE",request.event);
-	switch(request.event){
-		case "login":
-			console.log("***LOGIN***");
-			init();
-			break;
-		case "logout":
-			console.log("***LOGOUT***");
-			clearTimeout(observerTimer);
-			break;
-		case "soundplay":
-			soundplay();
-			break;
-		case "notification_on":
-			clearTimeout(observerTimer);
-			init();
-			break;
-		case "notification_off":
-			clearTimeout(observerTimer);
-	}
-});
+
 init();

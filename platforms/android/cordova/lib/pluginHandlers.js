@@ -34,15 +34,7 @@ var handlers = {
             // a later plugins release.  This is for legacy plugins to work with Cordova.
 
             if (options && options.android_studio === true) {
-                // If a Java file is using the new directory structure, don't penalize it
-                if (!obj.targetDir.includes('app/src/main')) {
-                    if (obj.src.endsWith('.java')) {
-                        dest = path.join('app/src/main/java', obj.targetDir.substring(4), path.basename(obj.src));
-                    } else if (obj.src.endsWith('.xml')) {
-                        // We are making a huge assumption here that XML files will be going to res/xml or values/xml
-                        dest = path.join('app/src/main', obj.targetDir, path.basename(obj.src));
-                    }
-                }
+                dest = getInstallDestination(obj);
             }
 
             if (options && options.force) {
@@ -55,10 +47,16 @@ var handlers = {
             var dest = path.join(obj.targetDir, path.basename(obj.src));
 
             if (options && options.android_studio === true) {
-                dest = path.join('app/src/main/java', obj.targetDir.substring(4), path.basename(obj.src));
+                dest = getInstallDestination(obj);
             }
 
-            deleteJava(project.projectDir, dest);
+            // TODO: Add Koltin extension to uninstall, since they are handled like Java files
+            if (obj.src.endsWith('java')) {
+                deleteJava(project.projectDir, dest);
+            } else {
+                // Just remove the file, not the whole parent directory
+                removeFile(project.projectDir, dest);
+            }
         }
     },
     'lib-file': {
@@ -317,4 +315,31 @@ function removeFileAndParents (baseDir, destFile, stopper) {
 
 function generateAttributeError (attribute, element, id) {
     return 'Required attribute "' + attribute + '" not specified in <' + element + '> element from plugin: ' + id;
+}
+
+function getInstallDestination (obj) {
+    var APP_MAIN_PREFIX = 'app/src/main';
+
+    if (obj.targetDir.startsWith('app')) {
+        // If any source file is using the new app directory structure,
+        // don't penalize it
+        return path.join(obj.targetDir, path.basename(obj.src));
+    } else if (obj.src.endsWith('.java')) {
+        return path.join(APP_MAIN_PREFIX, 'java', obj.targetDir.substring(4), path.basename(obj.src));
+    } else if (obj.src.endsWith('.aidl')) {
+        return path.join(APP_MAIN_PREFIX, 'aidl', obj.targetDir.substring(4), path.basename(obj.src));
+    } else if (obj.targetDir.includes('libs')) {
+        if (obj.src.endsWith('.so')) {
+            return path.join(APP_MAIN_PREFIX, 'jniLibs', obj.targetDir.substring(5), path.basename(obj.src));
+        } else {
+            return path.join('app', obj.targetDir, path.basename(obj.src));
+        }
+    } else if (obj.targetDir.includes('src/main')) {
+        return path.join('app', obj.targetDir, path.basename(obj.src));
+    } else {
+        // For all other source files not using the new app directory structure,
+        // add 'app/src/main' to the targetDir
+        return path.join(APP_MAIN_PREFIX, obj.targetDir, path.basename(obj.src));
+    }
+
 }

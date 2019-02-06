@@ -1,19 +1,19 @@
 {
-  "_from": "cordova-plugin-firebase",
+  "_from": "cordova-plugin-firebase@^1.0.5",
   "_id": "cordova-plugin-firebase@1.0.5",
   "_inBundle": false,
   "_integrity": "sha1-s3swFRRnCbvMwN/IGEYZCbOM7Io=",
   "_location": "/cordova-plugin-firebase",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "range",
     "registry": true,
-    "raw": "cordova-plugin-firebase",
+    "raw": "cordova-plugin-firebase@^1.0.5",
     "name": "cordova-plugin-firebase",
     "escapedName": "cordova-plugin-firebase",
-    "rawSpec": "",
+    "rawSpec": "^1.0.5",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "^1.0.5"
   },
   "_requiredBy": [
     "#USER",
@@ -21,8 +21,8 @@
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-firebase/-/cordova-plugin-firebase-1.0.5.tgz",
   "_shasum": "b37b3015146709bbccc0dfc818461909b38cec8a",
-  "_spec": "cordova-plugin-firebase",
-  "_where": "C:\\Users\\Rox\\Documents\\projects\\VRCHub",
+  "_spec": "cordova-plugin-firebase@^1.0.5",
+  "_where": "/home/rox/Desktop/VRChatMobile",
   "author": {
     "name": "Robert Arnesson"
   },

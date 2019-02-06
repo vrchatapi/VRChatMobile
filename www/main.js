@@ -1,10 +1,12 @@
-var API_URL = "https://www.vrchat.net/api/1/";
-var CLIENT_API_KEY = "";
-
+var API_URL = "https://api.vrchat.cloud/api/1/"; // Access point to the API.
+var CLIENT_API_KEY = ""; // The key required for accessing the VRChat API>
+var localstorage = ""; // I don't know what this is.
+var debugFriends = false; // For debugging 
 
 
 function getAPIUrl(){
 	return API_URL;
+	console.log("Retrieved API URL:" + API_URL);
 }
 
 function sendReq(endpoint,success,error){
@@ -14,28 +16,18 @@ function sendReq(endpoint,success,error){
 			localStorage['clientapikey'] = data["clientApiKey"];
 			success(data);},error
 		);
-
-	//var uri = getAPIUrl() + endpoint;
-	//
-	//$.ajax({
-	//    url: uri,
-	//    type: 'GET',
-	//    success: (data)=>success(data),
-	//    error: (data)=>error(data)
-	//});
-
 }
 function getUsername(){
 	return localStorage['user'];
 }
 function getPassword(){
-	return localStorage['pass'];
+	return localStorage['pass']; // Encrypt or hash.
 }
 function getClientapikey(){
 	return localStorage['clientapikey'];
 }
 function getToken(){
-	return localStorage["token"];
+	return localStorage["token"]; // Encrypt or hash.
 }
 
 function setUsername(val){
@@ -60,7 +52,7 @@ function sendReqCommand(prop,endpoint,success,error){
 	var uri = getAPIUrl() + endpoint;
 
 	var p = new Object();
-	p.type="GET";
+	p.tpe="GET";
 	p.url =uri + "?apiKey=" + key;
 	p.xhrFields = { withCredentials: true};
 	p.crossDomain= true;
@@ -83,16 +75,13 @@ function sendReqCommand(prop,endpoint,success,error){
 		p.success = (data) =>{
 		    	success(data);};
 		p.error = (XMLHttpRequest, textStatus, errorThrown) => {
-		        console.log("sendReqUser : ajax�ʐM�Ɏ��s���܂��� ");
+		        console.log("sendReqUser 	: " + user); // Update unreadable characters.
 		        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
 		        console.log("textStatus     : " + textStatus);
 		        console.log("errorThrown    : " + errorThrown.message);
 				error();
 			}
 	$.ajax(p);
-
-
-
 }
 
 
@@ -103,29 +92,42 @@ function reqKey(success,error){
 	},error);
 }
 
-function setUserdata(data){
-	localStorage["token"] = data["authToken"];
-	localStorage["user_icon_url"] = data["currentAvatarThumbnailImageUrl"];
-	localStorage["user_name"] = data["displayName"];
-	localStorage["friends_num"] = data["friends"].length;
-	console.log(data);
+var userdata;
+function getInfo(success,error){
+	var u = getUsername();
+	var p = getPassword();
+	var k = getClientapikey();
+
+	sendReqCommand({user:u,pass:p,key:k,type:"basic"},"auth/user",(data)=>{
+		console.log("logging in with Username " + u);
+		userdata = JSON.parse(data);
+		console.log(userdata);
+		
+	localStorage["token"] = userdata["authToken"];
+	localStorage["user_icon_url"] = userdata["currentAvatarThumbnailImageUrl"];
+	localStorage["user_name"] = userdata["displayName"];
+	localStorage["friends_num"] = userdata["friends"].length;
+	showInfo(userdata);
+	},error);
 }
+
 function showInfo(data){
-	$("#userpanel").show();
-	console.log("xxxx showInfo");
-	var icon = localStorage["user_icon_url"];
-	var name = localStorage["user"];
-	var fr_num=localStorage["friends_num"];
+	$("#userpanel").show(); 
+	console.log("Populating User Info......");
+	console.log(userdata['displayName']);
+	console.log(userdata['currentAvatarThumbnailImageUrl']);
+	var icon = userdata['currentAvatarThumbnailImageUrl'];
+	var name = userdata['displayName'];
 
 	var $img = $("<img>").attr({src: icon,id:"myicon"});
 	var $name= $("<div>").text(name);
 	var $onfr   = $("<div>").attr({id:"onfr" ,title:"onlinefriends"});
 	var $allfr  = $("<div>").attr({id:"allfr",title:"allfriends"}).text( " friends");
 	$("#userpanel").empty().append($img).append($name).append($onfr).append($allfr);
-
-
-
 }
+
+
+
 function reqToken(success,error){
 	//basic�F�؂�token���擾�i�X�V�j
 	var u = getUsername();
@@ -133,23 +135,23 @@ function reqToken(success,error){
 	var k = getClientapikey();
 
 	sendReqCommand({user:u,pass:p,key:k,type:"basic"},"auth/user",(data)=>{
-		setUserdata(data);
 		success(data);
 	},error);
 }
+
 function fetchOnlinedata(success){
 	var key = getClientapikey();
 	var token = getToken();
 	sendReqCommand({type:"auth",key:key,token:token},"auth/user/friends",(data)=>{
 		console.log(data);
 		success(data);
+		$("#loading").show();
 	},()=>{
 		reqToken(
 			(data)=>{
 				fetchOnlinedata(showfriends);
+				$("#loading").hide();
 			},()=>{
-				//�擾�Ɏ��s�������\��error:���O�C���ł��܂����ł���
-				//���O�C�����ʂ�
 				loginstatus(false);
 				logout();
 			}
@@ -157,15 +159,19 @@ function fetchOnlinedata(success){
 	});
 
 }
+
+
 function showfriends(data){
 	$("#frineds").show();
 	$("#friends").empty();
-	console.log("xxxxxxxshow friends");
-	console.log(data);
+	if (debugFriends) {
+		console.log("Showing friends.");
+		console.log(data);
+	}
 
-	$("#onfr").text(data.length + " online");
+	$("#onfr").text(data.length + " online ");
 
-	data.sort((a,b)=>{
+	data.sort((a,b)=>{ // Add friend sorting in later update (By name, world, ect..)
 		return a["displayName"].localeCompare(b["displayName"]);
 	});
 
@@ -174,12 +180,12 @@ function showfriends(data){
 				src:val["currentAvatarThumbnailImageUrl"],
 				align:"middle"
 			});
-			console.log("****name ",val["displayName"]);
+			if (debugFriends) {console.log("****name ",val["displayName"]);} // whats with your console logging? I marked it so it would be easyer to find when i have 100lines of errors
 			var worldid = worldId(val["location"]);
 			var instanceid = instanceId(val["location"]);
 
 
-			console.log("@@@@", val["location"]);
+			if (debugFriends) {console.log("@@@@", val["location"]);}
 			var loc = getWorldname(worldid);
 			var $c_img  = $("<div>").addClass("c_img").append($img);
 			var $c_text = $("<div>").append($("<div>").text(val["displayName"])).append($("<a>").attr({href:lunchurl(worldid,instanceid),target:"_blank"}).html($("<div>").addClass(worldid).text(preset_in(loc))).append($("<span>").text(" (" + instancestatus(instanceid) + ")")));
@@ -190,9 +196,11 @@ function showfriends(data){
 
 	});
 }
+
 function preset_in(str){
 	return " in " + str;
 }
+
 function loginsuccess(data){
 	loginstatus(true);
 
@@ -202,7 +210,8 @@ function loginsuccess(data){
 
 	$("#loginpanel").hide();
 	$("#logoutpanel").show();
-	showInfo(data);
+	showInfo(userdata);
+	fetchOnlinedata();
 	fetchOnlinedata(showfriends);
 
 	backgroundsend("login");
@@ -226,12 +235,6 @@ function esc(str){
 function loginerror(data){
 
 }
-function backgroundsend(val){
-chrome.runtime.sendMessage({
-		event:val
-	});
-
-}
 
 
 function str2bool(val){
@@ -239,7 +242,7 @@ function str2bool(val){
 }
 
 function worldId(str){
-	console.log("*****world ",str);
+	if (debugFriends) {console.log("*****world ",str);}
 	return str.split(":")[0];
 }
 function instanceId(str){
@@ -262,27 +265,26 @@ function instancestatus(instanceid){
 	return status;
 }
 function lunchurl(worldid,instanceid){
-	return "https://www.vrchat.net/launch?worldId=" + worldid + "&instanceId=" + instanceid;
+	return "https://vrchat.net/launch?worldId=" + worldid + "&instanceId=" + instanceid;
 }
 
 function fetchWorldname(worldid){
 	k = getClientapikey();
 	t = getToken();
-	console.log("fetch*************",worldid);
+	if (debugFriends) {console.log("fetch*************",worldid);}
 	sendReqCommand({type:"auth",key:k,token:t},"worlds/"+worldid,(data)=>{
 		var name = data["name"];
 		localStorage[worldid] = name;
 		$("."+ worldid).text(preset_in(name));
 	},()=>{
-		console.log("fetchWorldname error");
+		if (debugFriends) {console.log("fetchWorldname error");}
 	});
 
 }
 
 function getWorldname(worldid){
 	var loc = worldid;
-	console.log("--------------loc",loc);
-	console.log("getwn ",localStorage[worldid]);
+	if (debugFriends) {console.log("--------------loc",loc); console.log("getwn ",localStorage[worldid]);}
 	var world = localStorage[worldid];
 
 		if(worldid.split("_")[0]=="wrld"){
@@ -307,12 +309,9 @@ function login(){
 	var k  = getClientapikey();
 	var status;
 	if (u && p){
-		//localstorage�Ƀ��O�C�����񂪂����Ȃ���
-		//token���񂪂��邩�m�F
 		var t = getToken();
 
 		if(t){
-			//token�������΂���token�Ńt�����h�������擾
 			console.log("has token");
 			sendReqCommand({user:u,pass:p,key:k,token:t,type:"auth"},"auth/user",
 				(data)=>{
@@ -327,7 +326,7 @@ function login(){
 							loginsuccess(data);
 						},()=>{
 							//�擾�Ɏ��s�������\��error:���O�C���ł��܂����ł���
-							//���O�C�����ʂ�
+							//���O�C�����ʂ� // this is fucking dumb. wtf great comments
 							loginstatus(false);
 							logout();
 						}
@@ -355,17 +354,13 @@ function logout(){
 	$("#loginpanel").show();
 	$("#friendspanel").hide();
 	$("#userpanel").hide();
-	$("#menu").hide();
-	$("#profile").hide();
-	loginstatusclear();
-	backgroundsend("logout");
-}
-
-function loginstatusclear(){
+	$("#loading").hide();
 	["clientapikey","friends_num","islogin","pass","token","user_icon_url","user_name"].forEach((val)=>{
 		localStorage.removeItem(val);
 	});
+	backgroundsend("logout");
 }
+
 function loginstatus(bool) {
 	localStorage["islogin"] = bool;
 }

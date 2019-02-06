@@ -5,127 +5,146 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Forty by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<script src="jquery-1.12.4.min.js"></script>
-		<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-		<link rel="stylesheet" type="text/css" href="popup.css">
-		<script src="pulltorefresh.js/dist/pulltorefresh.js" type="text/javascript"></script>
-<script type='text/javascript'>
 
-// Initialize 
-PullToRefresh.init({
- mainElement: 'body',
- distThreshold: 120,
- distMax: 140,
- distReload: 110,
- triggerElement: '#friendspanel',
- instructionsPullToRefresh: 'Pull down to refresh the page',
- instructionsReleaseToRefresh: 'Release to refresh the page',
- instructionsRefreshing: 'Refreshing the page',
- refreshTimeout: 2000,
- onRefresh: function(){ 
-  alert("Refresh");
- }
-});
-</script>
+<head>
+    <title>VRChat Mobile</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="popup.js"></script>
+    <script src="cordova.js"></script>
+    <link rel="stylesheet" href="popup.css">
+    <script src="background.js"></script>
+    <link rel='stylesheet' href='material-refresh.min.css' />
+    <script src='material-refresh.min.js'></script>
 
-	</head>
-	<body class="is-preload">
+</head>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+<body class="is-preload">
 
-				<!-- Header -->
-					<header id="header" class="alt">
-						<a href="index.html" class="logo"><strong>VRChat Mobile</strong></a>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-				<!-- Menu -->
-					<nav id="menu">
-						<ul class="actions stacked">
-							<li>
-								<li><a id="profile" href="profile.html" class="button fit">My Profile</a></li>
+        <!-- Header -->
+        <header id="header" class="alt" style="	position: fixed;
+    background: #242943;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);">
+            <a href="index.html" class="logo"><strong>VRChat Mobile</strong></a>
+            <nav>
+                <a href="#menu">Menu</a>
+            </nav>
+        </header>
 
-								
-							</li>
-							<li><a id="logout" class="button fit">Logout</a></li>
-							<li><a href="#settings" class="button fit">Settings(Coming Soon)</a></li>
-							<li>
-								<h1>Version 1.1.</h1>
-							</li>
-							<li>
-							<div id="google_translate_element"></div>
-						</li>
-						</ul>
-					</nav>
-					
-				<!-- Banner -->
-		
+        <!-- Menu -->
+        <nav id="menu" style="padding-top: 3%;">
+            <ul>
+                <li><a id="profile" href="profile.html" class="button fit">My Profile</a></li>
+                <li><a id="logout" href="#" class="button fit">Logout</a></li>
+                <li><a href="chat.html" class="button fit">Chat</a></li>
+		<li><a href="#settings" class="button fit">Settings(Coming Soon)</a></li>
+                    <a href="https://discord.gg/FtZfEsk"><img src="img/logo_discord_our.png" style="
+  																									height: 62px;
+    																								border-radius: 0%;
+    																								padding-top: 5px;
+																									">
+                    </a>
+                    <a href="https://www.patreon.com/VRChapTeam"><img src="img/logo_patreon.png" style="
+  																									height: 62px;
+    																								border-radius: 0%;
+    																								padding-top: 5px;
+																									">
+                    </a>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="actions stacked" id="loginpanel">
-									<div>
-										<div class="info">username:</div><input type="text" id="username" size="20"></input>
-									</div>
-									<div>
-										<div class="info">password:</div><input type="password" id="password" size="20"></input>
-									</div>
-									<div>
-										<button type="button" id="login">LOGIN</button>
-									</div>
-									<hr />
-								</div>
-						<div id="userpanel">
-						
-						</div>
+                    <h1 id="version">Version 1.2.2<a href="debug.html">.</a></h1>
+                </li>
+                <li>
+                    <!--<div id="google_translate_element"></div> -->
+                </li>
+            </ul>
+        </nav>
 
-						<div id="friendspanel">
-							<ul id="friends" style="
+        <!-- Banner -->
+
+        <!-- Main -->
+        <div id="main">
+
+            <div class="actions stacked" id="loginpanel" style="
+    padding-left: 4%;
+    width: 95%;
+">
+                <div>
+                    <div class="info">username:</div>
+                    <input type="text" id="username" size="20"></input>
+                </div>
+                <div>
+                    <div class="info">password:</div>
+                    <input type="password" id="password" size="20"></input>
+                </div>
+                <div style="
+   												padding-top: 5%;
+   												padding-left: 73%;
+   												padding-bottom: 5%;
+   												">
+                    <button type="button" id="login">LOGIN</button>
+                </div>
+                <div id="notice">
+                    <h1 style="
+   											 font-size: 17px;padding: 4%;it would be padding-innerpadding-top: 2%;box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);">
+   											 Notice: This isn't the official game, This is a <strong>third party</strong> tool used to manage your account and friends, Before continuing please read our <a href="https://vrchap.net/mobile/privacy" style="color: #9bf1ff;">privacy policy here</a>.</h1> </div>
+            </div>
+        </div>
+        <div id="userpanel">
+
+        </div>
+
+        <div id="friendspanel">
+            <ul id="friends" style="
    									 position: relative;
     								 right: 2.8%;
     								 padding-top: 0%;
     								 font-size: 15px;
     								 width: 100%
 									">
-							</ul>
-							<div id="loading"><img  src="loading.gif" style="
+            </ul>
+            <div id="loading"><img src="loading.gif" style="
 									position: relative;
 									height: 80px;
 									width: 80px;
 									left: 	38%;
 									top: 	50%;
-									"
-							/></div>
-						</div>
-					</div>
+									visibility: hidden;
+									" /></div>
+        </div>
+    </div>
 
-				<!-- Contact -->
-					
+    <!-- Contact -->
 
-				<!-- Footer -->
-				
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Footer -->
 
-			</div>
+    </div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="main.js"></script>
-			<script src="popup.js"></script>
+    <!-- Scripts -->
 
-	</body>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="main.js"></script>
+</body>
+
 </html>

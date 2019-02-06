@@ -12,7 +12,8 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<script src="jquery-1.12.4.min.js"></script>
-		
+		<script src="qrcode.min.js"></script>
+		<script src="main.js"></script>
 		<script src="popup.js"></script>
 		<link rel="stylesheet" type="text/css" href="popup.css">
 
@@ -23,12 +24,14 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header" class="alt">
-						<a href="index.html" class="logo"><strong>VRChat Mobile</strong></a>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+	        <header id="header" class="alt" style="	position: fixed;
+    background: #242943;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);">
+            <a href="index.html" class="logo"><strong>VRChat Mobile</strong></a>
+            <nav>
+                <a href="#menu">Menu</a>
+            </nav>
+        </header>
 
 				<!-- Menu -->
 					<nav id="menu">
@@ -42,7 +45,7 @@
 							<li><a id="logout" class="button fit">Logout</a></li>
 							<li><a href="#settings" class="button fit">Settings</a></li>
 							<li>
-								<a>Version 1.1B</a>
+								<a>Version 1.2.1</a>
 							</li>
 						</ul>
 					</nav>
@@ -51,10 +54,13 @@
 		
 
 				<!-- Main -->
+					<div id="qrcode">
+						
+					</div>
 					
-
-<div id="userpanel">
-								</div>	
+					<div id="userpaneladv">
+						<a>Nothing here yet come back soon</a>
+					</div>	
 	
 
 				<!-- Contact -->
