@@ -1,4 +1,4 @@
-#Wed Aug 22 22:44:03 BST 2018
-base.0=C\:\\Users\\Rox\\Documents\\projects\\VRCHub\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+#Mon Feb 04 03:50:37 PST 2019
+base.0=/home/rox/Desktop/VRChatMobile/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
 renamed.0=classes.dex
-file.0=C\:\\Users\\Rox\\Documents\\projects\\VRCHub\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex

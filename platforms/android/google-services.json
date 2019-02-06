@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "624506604814",
+    "firebase_url": "https://vrchat-mobile.firebaseio.com",
+    "project_id": "vrchat-mobile",
+    "storage_bucket": "vrchat-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624506604814:android:1d88d81cb706ee25",
+        "android_client_info": {
+          "package_name": "com.roxyboxxy.vrchub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "624506604814-o891borqjtiqajttq5k60laf4k3vlt9s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXG0hDWI-p1YeQOx4_2QPBL4sXvUG-F3Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

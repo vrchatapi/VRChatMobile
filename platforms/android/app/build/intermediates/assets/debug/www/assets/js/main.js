@@ -138,7 +138,7 @@
 				// Hide original.
 					$image.hide();
 
-			// Link.
+			// Link.hou made it show the login on first r
 				if ($link.length > 0) {
 
 					$x = $link.clone()

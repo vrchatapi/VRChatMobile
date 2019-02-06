@@ -1,0 +1,7 @@
+# git shortlog -sn
+
+    36	Alvaro Cabrera
+    19	Rafael Soto
+     2	Doug DeBold
+     1	Joe Callon
+     1	Tony Brix

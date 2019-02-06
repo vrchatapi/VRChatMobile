@@ -1,14 +1,18 @@
-
 $(document).ready(function(){
+
+	console.log("Cordova Information~")
+	console.log(cordova);
 
 	if(islogin()){
 		console.log("login!!");
+		getInfo();
 		$("#loginpanel").hide();
-		showInfo();
 		fetchOnlinedata(showfriends);
 	}else{
 		$("#logoutpanel").hide();
 	}
+
+
 
 	$("button#login").click(function(){
 		var user = $("#username").val();
@@ -24,6 +28,8 @@ $(document).ready(function(){
 			console.log("has not apikey ----reqKey()");
 			reqKey(()=>{
 				login();
+				getInfo();
+				fetchOnlinedata(showfriends);
 			},()=>{});
 		}
 	});

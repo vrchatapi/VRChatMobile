@@ -1,25 +1,28 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.roxyboxxy.vrchub" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.roxyboxxy.vrchatmobile" version="1.2.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <name>VRCHub</name>
+    <feature name="FirebasePlugin">
+        <param name="android-package" value="org.apache.cordova.firebase.FirebasePlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="RareloopAppVersion">
+        <param name="android-package" value="com.rareloop.cordova.appversion.RareloopAppVersion" />
+    </feature>
+    <name>VRChatMobile</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        A simple tool for managing your friends and account for VRChat.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="dev@cordova.apache.org" href="https://vrchap.net/mobile/">
+        The VRChap Team
     </author>
     <content src="index.html" />
-    <access origin="https://www.vrchat.net" />
+    <icon density="xhdpi" height="57" platform="android" src="res/icon/android/icon-96-xhdpi.png" width="57" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
 </widget>

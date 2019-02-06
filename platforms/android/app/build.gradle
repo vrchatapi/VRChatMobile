@@ -22,14 +22,14 @@ apply plugin: 'com.android.application'
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
         maven {
             url "https://maven.google.com"
         }
+        jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.android.tools.build:gradle:3.0.1'
     }
 }
 
@@ -69,7 +69,7 @@ ext {
     if (!project.hasProperty('cdvBuildMultipleApks')) {
         cdvBuildMultipleApks = null
     }
-    // Whether to append a 0 "abi digit" to versionCode when only a single APK is build 
+    // Whether to append a 0 "abi digit" to versionCode when only a single APK is build
     if (!project.hasProperty('cdvVersionCodeForceAbiDigit')) {
         cdvVersionCodeForceAbiDigit = null
     }
@@ -91,11 +91,17 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
+apply from: "../cordova-plugin-firebase/vrchatmobile-build.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
-def hasBuildExtras = file('build-extras.gradle').exists()
-if (hasBuildExtras) {
+def hasBuildExtras1 = file('build-extras.gradle').exists()
+if (hasBuildExtras1) {
     apply from: 'build-extras.gradle'
+}
+
+def hasBuildExtras2 = file('../build-extras.gradle').exists()
+if (hasBuildExtras2) {
+    apply from: '../build-extras.gradle'
 }
 
 // Set property defaults after extension .gradle files.
@@ -117,7 +123,7 @@ if (ext.cdvReleaseSigningPropertiesFile == null && file('../release-signing.prop
 // Cast to appropriate types.
 ext.cdvBuildMultipleApks = cdvBuildMultipleApks == null ? false : cdvBuildMultipleApks.toBoolean();
 ext.cdvVersionCodeForceAbiDigit = cdvVersionCodeForceAbiDigit == null ? false : cdvVersionCodeForceAbiDigit.toBoolean();
-ext.cdvMinSdkVersion = cdvMinSdkVersion == null ? null : defaultMinSdkVersion
+ext.cdvMinSdkVersion = cdvMinSdkVersion == null ? defaultMinSdkVersion : Integer.parseInt('' + cdvMinSdkVersion)
 ext.cdvVersionCode = cdvVersionCode == null ? null : Integer.parseInt('' + cdvVersionCode)
 
 def computeBuildTargetName(debugBuild) {
@@ -174,10 +180,11 @@ android {
     compileSdkVersion cdvCompileSdkVersion
     buildToolsVersion cdvBuildToolsVersion
 
-    //This code exists for Crosswalk and other Native APIs.
-    //By default, we multiply the existing version code in the Android Manifest by 10 and 
-    //add a number for each architecture.  If you are not using Crosswalk or SQLite, you can
-    //ignore this chunk of code, and your version codes will be respected.
+    // This code exists for Crosswalk and other Native APIs.
+    // By default, we multiply the existing version code in the
+    // Android Manifest by 10 and add a number for each architecture.
+    // If you are not using Crosswalk or SQLite, you can
+    // ignore this chunk of code, and your version codes will be respected.
 
     if (Boolean.valueOf(cdvBuildMultipleApks)) {
         flavorDimensions "default"
@@ -259,6 +266,13 @@ dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
+    compile "com.google.gms:google-services:+"
+    compile "com.google.android.gms:play-services-tagmanager:+"
+    compile "com.google.firebase:firebase-core:+"
+    compile "com.google.firebase:firebase-messaging:+"
+    compile "com.google.firebase:firebase-crash:+"
+    compile "com.google.firebase:firebase-config:+"
+    compile "com.google.firebase:firebase-perf:+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

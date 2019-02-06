@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Socket.IO Chat Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="stylechat.css">
+  <script src="popup.js"></script>
+  <script src="cordova.js"></script>
+</head>
+<body>
+					<div id="wrapper">
+
+				<!-- Header -->
+        <header id="header" class="alt" style="	position: fixed;
+    background: #242943;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);">
+            <a href="index.html" class="logo"><strong>VRChat Mobile</strong></a>
+            <nav>
+                <a href="#menu">Menu</a>
+            </nav>
+        </header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="actions stacked">
+							<li>
+								<li><a href="index.html" class="button fit">Freinds</a></li>
+								
+
+								
+							</li>
+							<li><a id="logout" class="button fit">Logout</a></li>
+							<li><a href="#settings" class="button fit">Settings</a></li>
+							<li>
+								<a>Version 1.2.1</a>
+							</li>
+						</ul>
+					</nav>
+	</div>
+  <ul class="pages">
+    <li class="chat page" style="display: list-item;height: 93%;">
+      <div class="chatArea">
+        <ul class="messages"></ul>
+      </div>
+      <input class="inputMessage" placeholder="Type here..."/>
+    </li>
+    <li class="login page">
+      <div class="form">
+        <h3 class="title">What's your nickname?</h3>
+        <input class="usernameInput" type="text" maxlength="14" />
+      </div>
+    </li>
+  </ul>
+
+  <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="http://2.98.178.223:3000/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+    <script src="chat.js"></script>
+</body>
+</html>
