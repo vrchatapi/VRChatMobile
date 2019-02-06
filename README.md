@@ -40,4 +40,4 @@ Note - Android Studio, Java jre|jdk & nodejs need to be installed
 
 # Install now 
 
-Playstore: https://play.google.com/store/apps/details?id=com.roxyboxxy.vrchub
+Playstore: https://play.google.com/store/apps/details?id=com.roxyboxxy.vrchatmobile
