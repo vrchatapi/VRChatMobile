@@ -42,7 +42,7 @@
   "devDependencies": {
     "buble": "0.14.2",
     "chokidar": "1.6.0",
-    "eslint": "3.5.0",
+    "eslint": "4.18.2",
     "eslint-config-airbnb-base": "7.1.0",
     "eslint-plugin-import": "1.15.0",
     "less": "2.7.1",
