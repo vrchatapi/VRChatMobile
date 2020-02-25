@@ -1,0 +1,124 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Forty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="jquery-1.12.4.min.js"></script>
+		<script src="qrcode.min.js"></script>
+		<script src="popup.js"></script>
+		<script src="cordova.js"></script>
+		<script src="main.js"></script>
+		<link rel="stylesheet" type="text/css" href="popup.css">
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+        <header id="header" class="alt" style="	position: fixed;
+    background: #242943;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);">
+            <a href="index.html" class="logo"><strong>VRChat Mobile</strong></a>
+            <nav>
+                <a href="#menu">Menu</a>
+            </nav>
+        </header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="actions stacked">
+							<li>
+								<li><a href="index.html" class="button fit">Freinds</a></li>
+								
+
+								
+							</li>
+							<li><a id="logout" class="button fit">Logout</a></li>
+							<li><a href="#settings" class="button fit">Settings</a></li>
+							<li>
+								<a>Version 1.2.1</a>
+							</li>
+						</ul>
+					</nav>
+					
+				<!-- Banner -->
+		
+
+				<!-- Main -->
+				<div id="log" style="    width: 99%;
+    word-wrap: break-word; font-size: 1px;"></div>
+
+	<div id="userpanel" style="visibility: hidden;">
+
+    </div>
+
+    <div id="friendspanel">
+        <ul id="friends" style="
+   									visibility: hidden;
+									">
+        </ul>
+        <div id="loading"><img src="loading.gif" style="
+									
+									visibility: hidden;
+									" /></div>
+    </div>
+    </div>
+
+
+				<!-- Contact -->
+					
+
+				<!-- Footer -->
+				
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script type="text/javascript">
+		(function (logger) {
+    console.old = console.log;
+    console.log = function () {
+        var output = "", arg, i;
+
+        for (i = 0; i < arguments.length; i++) {
+            arg = arguments[i];
+            output += "<span class=\"log-" + (typeof arg) + "\">";
+
+            if (
+                typeof arg === "object" &&
+                typeof JSON === "object" &&
+                typeof JSON.stringify === "function"
+            ) {
+                output += JSON.stringify(arg);   
+            } else {
+                output += arg;   
+            }
+
+            output += "</span>&nbsp;";
+        }
+
+        logger.innerHTML += output + "<br><br>";
+        console.old.apply(undefined, arguments);
+    };
+})(document.getElementById("log"));
+</script>
+
+	</body>
+</html>

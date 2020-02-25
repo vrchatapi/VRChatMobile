@@ -1,0 +1,64 @@
+{
+  "_from": "cordova-plugin-firebase-analytics",
+  "_id": "cordova-plugin-firebase-analytics@2.0.4",
+  "_inBundle": false,
+  "_integrity": "sha512-OKU/z5o2rRbXanIUbkbGSi1AzuA6A8m3PCuw0C7r5zsUt8j86CXnRsgMRzG5LKKYOygL2E8ym6525NzDrDvv6Q==",
+  "_location": "/cordova-plugin-firebase-analytics",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-firebase-analytics",
+    "name": "cordova-plugin-firebase-analytics",
+    "escapedName": "cordova-plugin-firebase-analytics",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-firebase-analytics/-/cordova-plugin-firebase-analytics-2.0.4.tgz",
+  "_shasum": "d89c558353892803495fb960507cac3ce186c7f2",
+  "_spec": "cordova-plugin-firebase-analytics",
+  "_where": "I:\\Roxy's Projects\\VRChatMobile\\vrcmobi",
+  "author": {
+    "name": "Maksim Chemerisuk",
+    "email": "chemerisuk@gmail.com",
+    "url": "https://github.com/chemerisuk"
+  },
+  "bugs": {
+    "url": "https://github.com/chemerisuk/cordova-plugin-firebase-analytics/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-firebase-analytics",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova plugin for Firebase Analytics",
+  "homepage": "https://github.com/chemerisuk/cordova-plugin-firebase-analytics#readme",
+  "keywords": [
+    "cordova",
+    "firebase",
+    "analytics",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-firebase-analytics",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chemerisuk/cordova-plugin-firebase-analytics.git"
+  },
+  "scripts": {
+    "postversion": "git push && git push --tags",
+    "version": "replace -s 'version=\"(.+)(?=\">)' 'version=\"'$npm_package_version plugin.xml && git add plugin.xml"
+  },
+  "version": "2.0.4"
+}

@@ -10,12 +10,24 @@
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.roxyboxxy.vrchatmobile"
     },
-    "cordova-plugin-firebase": {
+    "phonegap-plugin-barcodescanner": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
       "PACKAGE_NAME": "com.roxyboxxy.vrchatmobile"
     },
-    "cordova-plugin-appversion": {
+    "cordova-plugin-firebase-analytics": {
+      "FIREBASE_CORE_VERSION": "16.0.+",
+      "PACKAGE_NAME": "com.roxyboxxy.vrchatmobile"
+    },
+    "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "com.roxyboxxy.vrchatmobile"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-support-android-plugin": {
+      "PACKAGE_NAME": "com.roxyboxxy.vrchatmobile"
+    },
+    "cordova-support-google-services": {
+      "PACKAGE_NAME": "com.roxyboxxy.vrchatmobile"
+    }
+  }
 }

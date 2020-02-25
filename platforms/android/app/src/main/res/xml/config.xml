@@ -1,28 +1,35 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.roxyboxxy.vrchatmobile" version="1.2.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.roxyboxxy.vrchatmobile" version="5.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="FirebasePlugin">
-        <param name="android-package" value="org.apache.cordova.firebase.FirebasePlugin" />
+    <feature name="BarcodeScanner">
+        <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
+    </feature>
+    <feature name="FirebaseAnalytics">
+        <param name="android-package" value="by.chemerisuk.cordova.firebase.FirebaseAnalyticsPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="RareloopAppVersion">
-        <param name="android-package" value="com.rareloop.cordova.appversion.RareloopAppVersion" />
+    <feature name="OneSignalPush">
+        <param name="android-package" value="com.plugin.gcm.OneSignalPush" />
     </feature>
-    <name>VRChatMobile</name>
+    <name>VRCMobile(Unofficial)</name>
     <description>
-        A simple tool for managing your friends and account for VRChat.
+        A sample Apache Cordova application that responds to the deviceready event.
     </description>
-    <author email="dev@cordova.apache.org" href="https://vrchap.net/mobile/">
-        The VRChap Team
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
     </author>
+    <icon density="mdpi" height="57" platform="android" src="res/android/icon.png" width="57" />
     <content src="index.html" />
-    <icon density="xhdpi" height="57" platform="android" src="res/icon/android/icon-96-xhdpi.png" width="57" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
 </widget>

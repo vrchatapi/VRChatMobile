@@ -1,0 +1,61 @@
+{
+  "_from": "cordova-support-android-plugin@~1.0.0",
+  "_id": "cordova-support-android-plugin@1.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-m/ciZFl2kPsdA1jFp0By2txF0aOqnVvhNqQhM04fFNjD2tlcFNsaIqOpkCfDzCYVy9mVH0BupwePmRMTgEIoMw==",
+  "_location": "/cordova-support-android-plugin",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "cordova-support-android-plugin@~1.0.0",
+    "name": "cordova-support-android-plugin",
+    "escapedName": "cordova-support-android-plugin",
+    "rawSpec": "~1.0.0",
+    "saveSpec": null,
+    "fetchSpec": "~1.0.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-support-android-plugin/-/cordova-support-android-plugin-1.0.1.tgz",
+  "_shasum": "ff3010596dd66dc7e0f3ca9c0942dc55a3309089",
+  "_spec": "cordova-support-android-plugin@~1.0.0",
+  "_where": "I:\\Roxy's Projects\\VRChatMobile\\vrcmobi",
+  "author": {
+    "name": "Maksim Chemerisuk",
+    "email": "chemerisuk@gmail.com",
+    "url": "https://github.com/chemerisuk"
+  },
+  "bugs": {
+    "url": "https://github.com/chemerisuk/cordova-support-android-plugin/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-support-android-plugin",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "More convenient base CordovaPlugin class",
+  "homepage": "https://github.com/chemerisuk/cordova-support-android-plugin#readme",
+  "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "name": "cordova-support-android-plugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chemerisuk/cordova-support-android-plugin.git"
+  },
+  "scripts": {
+    "postversion": "git push && git push --tags",
+    "version": "replace -s 'version=\"(.+)(?=\">)' 'version=\"'$npm_package_version plugin.xml && git add plugin.xml"
+  },
+  "version": "1.0.1"
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>VRChat Mobile</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="popup.js"></script>
+    <script src="cordova.js"></script>
+    <link rel="stylesheet" href="popup.css">
+    <script src="background.js"></script>
+    <link rel='stylesheet' href='material-refresh.min.css' />
+    <script src='material-refresh.min.js'></script>
+
+</head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header" class="alt" style="	position: fixed;
+    background: #242943;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);">
+            <a href="index.html" class="logo"><strong>VRChat Mobile</strong></a>
+            <nav>
+                <a href="#menu">Menu</a>
+            </nav>
+        </header>
+
+        <!-- Menu -->
+        <nav id="menu" style="padding-top: 3%;">
+            <ul>
+                <li><a id="profile" href="profile.html" class="button fit">My Profile</a></li>
+                <li><a id="logout" href="#" class="button fit">Logout</a></li>
+                <li><a href="chat.html" class="button fit">Chat Room</a></li>
+                <li>
+                    <a href="https://discord.gg/FtZfEsk"><img src="img/logo_discord_our.png" style="
+  																									height: 62px;
+    																								border-radius: 0%;
+    																								padding-top: 5px;
+																									">
+                    </a>
+                    <a href="https://www.buymeacoffee.com/RoxyBoxxy"><img src="img/logo_patreon.png" style="
+  																									height: 47px;
+  																									border-radius: 0%;
+  																									padding-top: 5px;
+  																									width: 241px;
+  																							">
+                    </a>
+
+                    <h1 id="version">Version 5.0.0<a href="debug.html">.</a></h1>
+                </li>
+                <li>
+                    <!--<div id="google_translate_element"></div> -->
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Banner -->
+
+        <!-- Main -->
+        <div id="main">
+
+            <div class="actions stacked" id="loginpanel" style="
+    padding-left: 4%;
+    width: 95%;
+">
+                <div>
+                    <div class="info">username:</div>
+                    <input type="text" id="username" size="20"></input>
+                </div>
+                <div>
+                    <div class="info">password:</div>
+                    <input type="password" id="password" size="20"></input>
+                </div>
+                <div style="
+   												padding-top: 5%;
+   												padding-left: 73%;
+   												padding-bottom: 5%;
+   												">
+                    <button type="button" id="login">LOGIN</button>
+                </div>
+                <div id="notice">
+                    <h1 style="
+   											 font-size: 17px;padding: 4%;it would be padding-innerpadding-top: 2%;box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);">
+   											 Notice: This isn't the official game, This is a <strong>third party</strong> tool used to manage your account and friends, Before continuing please read our <a href="https://vrchap.net/mobile/privacy" style="color: #9bf1ff;">privacy policy here</a>.</h1> </div>
+            </div>
+        </div>
+        <div id="userpanel" style="
+    padding-left: 25px;
+    padding-top: 8px;
+">
+
+        </div>
+
+        <div id="friendspanel">
+		            <ul id="noti" style="
+   									 position: relative;
+    								 right: 2.8%;
+    								 padding-top: 0%;
+    								 font-size: 15px;
+    								 width: 100%
+									">
+            </ul>
+    </div>
+
+    <!-- Contact -->
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Footer -->
+
+    </div>
+
+    <!-- Scripts -->
+
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

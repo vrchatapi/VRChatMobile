@@ -1,0 +1,68 @@
+﻿body{
+width:300px;
+height:500px;
+/*
+margin-right:0px;
+*/
+}
+
+#title{
+	position: absolute;
+	left:10px;
+	top:5px;
+	font-size:150%;
+}
+
+.info{
+width:60px;
+float:left
+}
+#myicon{
+	width:60px;
+	height:60px;
+}
+.friendicon{
+	width:60px;
+	height:60px;
+
+}
+.friendcontent{
+	float:none;
+	height:60px;
+	white-space: nowrap;
+}
+.c_img{
+	float:left;
+
+}
+ul li,ol li {
+list-style-position: outside;
+margin-top: 5px;
+}
+#onfr{
+	float:left;
+}
+#allfr{
+	float:none;
+}
+#friendspanel{
+	overflow:auto;
+
+}
+#loading {
+	max-width: 50%;
+	margin: 0 auto;
+}
+#credits{
+	text-align: right;
+	margin-right:5px;
+}
+a{
+	color:#000;
+}
+a:hover{
+	color:#5555FF;
+}
+#vrcnsearch{
+	width:100%;
+}

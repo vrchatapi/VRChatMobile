@@ -1,0 +1,32 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-appversion": {
+      "PACKAGE_NAME": "VRChatMobile(Unofficial)"
+    },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "VRChatMobile(Unofficial)"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "id": "cordova-plugin-appversion.RareloopAppVersion",
+      "file": "plugins/cordova-plugin-appversion/www/app-version.js",
+      "pluginId": "cordova-plugin-appversion",
+      "clobbers": [
+        "AppVersion"
+      ]
+    }
+  ],
+  "plugin_metadata": {
+    "cordova-plugin-appversion": "1.0.0",
+    "cordova-plugin-firebase": "1.0.5"
+  }
+}

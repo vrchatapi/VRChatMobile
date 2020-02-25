@@ -1,0 +1,199 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Forty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="jquery-1.12.4.min.js"></script>
+		
+		<script src="main.js"></script>
+		<script src="popup.js"></script>
+		<link rel="stylesheet" type="text/css" href="popup.css">
+		<script>
+		if(localStorage.getItem("LocalData") == null)
+{
+    var data = [];
+    data = JSON.stringify(data);
+    localStorage.setItem("LocalData", data);
+}
+</script>
+<script>
+function openCity(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+<script>
+function scan()
+{
+    cordova.plugins.barcodeScanner.scan(
+        function (result) {
+            if(!result.cancelled)
+            {
+                if(result.format == "QR_CODE")
+                {
+                    navigator.notification.prompt("Please enter name of data",  function(input){
+                        var name = input.input1;
+                        var value = result.text;
+
+                        var data = localStorage.getItem("LocalData");
+                        console.log(data);
+                        data = JSON.parse(data);
+                        data[data.length] = [name, value];
+
+                        localStorage.setItem("LocalData", JSON.stringify(data));
+						getAjax('https://api.vrchat.cloud/api/1/user/'+ data +'/friendRequest', function(data){ console.log(data); });
+                        alert("Done");
+						
+                    });
+                }
+            }
+        },
+        function (error) {
+            alert("Scanning failed: " + error);
+        }
+   );
+}
+</script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+	        <header id="header" class="alt" style="	position: fixed;
+    background: #242943;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);">
+            <a href="index.html" class="logo"><strong>VRChat Mobile</strong></a>
+            <nav>
+                <a href="#menu">Menu</a>
+            </nav>
+        </header>
+
+				<!-- Menu -->
+        <nav id="menu" style="padding-top: 3%;">
+            <ul>
+                <li><a id="Friends" href="index.html" class="button fit">My Friends</a></li>
+                <li><a id="logout" href="#" class="button fit">Logout</a></li>
+                <li><a href="#settings" class="button fit">Settings(Coming Soon)</a></li>
+                <li>
+                    <a href="https://discord.gg/FtZfEsk"><img src="img/logo_discord_our.png" style="
+  																									height: 62px;
+    																								border-radius: 0%;
+    																								padding-top: 5px;
+																									">
+                    </a>
+                    <a href="https://www.buymeacoffee.com/RoxyBoxxy"><img src="img/logo_patreon.png" style="
+  																									height: 47px;
+  																									border-radius: 0%;
+  																									padding-top: 5px;
+  																									width: 241px;
+  																							">
+                    </a>
+
+                    <h1 id="version">Version 5.0.0<a href="debug.html">.</a></h1>
+                </li>
+                <li>
+                    <!--<div id="google_translate_element"></div> -->
+                </li>
+            </ul>
+        </nav>
+					
+				<!-- Banner -->
+		<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'basic')">Basic Info</button>
+  <button class="tablinks" onclick="openCity(event, 'blocklist')">Block List</button>
+</div>
+		<div id="basic" class="tabcontent">
+				<!-- Main -->
+				        <div id="userpanel" style="
+													padding-left: 25px;
+													padding-top: 8px;
+						">
+						</div>  <div id="userpanel2" style="
+													padding-left: 25px;
+													padding-top: 8px;
+						">
+						</div>
+		</div>
+
+<!--<div id="qrcode"></div>
+
+
+					
+					<div id="userpaneladv">
+						<a target="_blank" href="javascript:scan();" style="text-decoration: none" style="
+    position: relative;
+    left: 127px;
+"><button>Scan a Code	</button></a>
+
+					</div>	
+	
+ -->
+				<!-- Contact -->
+					
+
+				<!-- Footer -->
+				
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<!-- <script src="main.js"></script>-->
+			<script src="popup.js"></script>
+			<script src="qrcode.min.js"></script>
+			<script type="text/javascript" src="cordova.js"></script>
+									<script>
+							var qrcode = new QRCode("qrcode");
+
+function makeCode () {      
+       var elText = document.getElementById('id');
+        qrcode.makeCode(elText.value);
+}
+makeCode();
+
+$("#text").
+    on("blur", function () {
+        makeCode();
+    }).
+    on("keydown", function (e) {
+        if (e.keyCode == 13) {
+            makeCode();
+        }
+    });
+						</script>
+
+
+	</body>
+</html>

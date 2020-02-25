@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Forty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="jquery-1.12.4.min.js"></script>
+
+		<script src="main.js"></script>
+		<script src="chat/main.js"></script>
+		<script src="popup.js"></script>
+		<link rel="stylesheet" type="text/css" href="popup.css">
+    
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+	        <header id="header" class="alt" style="	position: fixed;
+    background: #242943;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);">
+            <a href="index.html" class="logo"><strong>VRChat Mobile</strong></a>
+            <nav>
+                <a href="#menu">Menu</a>
+            </nav>
+        </header>
+
+				<!-- Menu -->
+        <nav id="menu" style="padding-top: 3%;">
+            <ul>
+                <li><a id="Friends" href="index.html" class="button fit">My Friends</a></li>
+                <li><a id="logout" href="#" class="button fit">Logout</a></li>
+                <li><a href="#settings" class="button fit">Settings(Coming Soon)</a></li>
+                <li>
+                    <a href="https://discord.gg/FtZfEsk"><img src="img/logo_discord_our.png" style="
+  																									height: 62px;
+    																								border-radius: 0%;
+    																								padding-top: 5px;
+																									">
+                    </a>
+                    <a href="https://www.buymeacoffee.com/RoxyBoxxy"><img src="img/logo_patreon.png" style="
+  																									height: 47px;
+  																									border-radius: 0%;
+  																									padding-top: 5px;
+  																									width: 241px;
+  																							">
+                    </a>
+
+                    <h1 id="version">Version 5.0.0<a href="debug.html">.</a></h1>
+                </li>
+                <li>
+                    <!--<div id="google_translate_element"></div> -->
+                </li>
+            </ul>
+        </nav>
+					
+				<!-- Banner -->
+		
+
+				<!-- Main -->
+				      <iframe src="https://awakens.me/vrcmobi" style="
+    width: 100%;
+    height: -webkit-fill-available;
+"> </iframe>
+	
+				<!-- Contact -->
+					
+
+				<!-- Footer -->
+				
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<!-- <script src="main.js"></script>-->
+			<script src="popup.js"></script>
+			<script src="qrcode.min.js"></script>
+			<script type="text/javascript" src="cordova.js"></script>
+									<script>
+							var qrcode = new QRCode("qrcode");
+
+function makeCode () {      
+       var elText = document.getElementById('id');
+        qrcode.makeCode(elText.value);
+}
+makeCode();
+
+$("#text").
+    on("blur", function () {
+        makeCode();
+    }).
+    on("keydown", function (e) {
+        if (e.keyCode == 13) {
+            makeCode();
+        }
+    });
+						</script>
+
+
+	</body>
+</html>

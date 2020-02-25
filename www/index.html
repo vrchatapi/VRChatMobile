@@ -21,6 +21,21 @@
     <script src="background.js"></script>
     <link rel='stylesheet' href='material-refresh.min.css' />
     <script src='material-refresh.min.js'></script>
+	<script>
+	document.addEventListener('deviceready', function () {
+  // Enable to debug issues.
+  // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+  
+  var notificationOpenedCallback = function(jsonData) {
+    console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+  };
+
+  window.plugins.OneSignal
+    .startInit("18914d27-076c-4fe4-b2b0-69692a290c35")
+    .handleNotificationOpened(notificationOpenedCallback)
+    .endInit();
+}, false);
+	</script>
 
 </head>
 
@@ -42,24 +57,16 @@
         <!-- Menu -->
         <nav id="menu" style="padding-top: 3%;">
             <ul>
-                <li><a id="profile" href="profile.html" class="button fit">My Profile</a></li>
+                <li><a id="Friends" href="index.html" class="button fit">My Friends</a></li>
                 <li><a id="logout" href="#" class="button fit">Logout</a></li>
-                <li><a href="chat.html" class="button fit">Chat</a></li>
-		<li><a href="#settings" class="button fit">Settings(Coming Soon)</a></li>
-                    <a href="https://discord.gg/FtZfEsk"><img src="img/logo_discord_our.png" style="
-  																									height: 62px;
-    																								border-radius: 0%;
-    																								padding-top: 5px;
-																									">
+                <li><a href="noti.html" class="button fit">Notifcations</a></li>
+                <li>
+                    <a href="https://discord.gg/FtZfEsk"><img id="discord" src="img/logo_discord_our.png">
                     </a>
-                    <a href="https://www.patreon.com/VRChapTeam"><img src="img/logo_patreon.png" style="
-  																									height: 62px;
-    																								border-radius: 0%;
-    																								padding-top: 5px;
-																									">
+                    <a href="https://www.buymeacoffee.com/RoxyBoxxy"><img id="bmac" src="img/logo_patreon.png">
                     </a>
 
-                    <h1 id="version">Version 1.2.2<a href="debug.html">.</a></h1>
+                    <h1 id="version">Version 5.0.0<a href="debug.html">.</a></h1>
                 </li>
                 <li>
                     <!--<div id="google_translate_element"></div> -->
@@ -92,32 +99,22 @@
                     <button type="button" id="login">LOGIN</button>
                 </div>
                 <div id="notice">
-                    <h1 style="
-   											 font-size: 17px;padding: 4%;it would be padding-innerpadding-top: 2%;box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);">
-   											 Notice: This isn't the official game, This is a <strong>third party</strong> tool used to manage your account and friends, Before continuing please read our <a href="https://vrchap.net/mobile/privacy" style="color: #9bf1ff;">privacy policy here</a>.</h1> </div>
+                    <h1>
+   						 Notice: This isn't the official game, This is a <strong>third party</strong> tool used to manage your account and friends, Before continuing please read our <a href="https://vrchap.net/mobile/privacy" style="color: #9bf1ff;">privacy policy here</a>.
+                    </h1> 
+                </div>
             </div>
         </div>
-        <div id="userpanel">
+        <div id="userpanel" style="
+    padding-left: 25px;
+    padding-top: 8px;
+">
 
         </div>
 
         <div id="friendspanel">
-            <ul id="friends" style="
-   									 position: relative;
-    								 right: 2.8%;
-    								 padding-top: 0%;
-    								 font-size: 15px;
-    								 width: 100%
-									">
+            <ul id="friends">
             </ul>
-            <div id="loading"><img src="loading.gif" style="
-									position: relative;
-									height: 80px;
-									width: 80px;
-									left: 	38%;
-									top: 	50%;
-									visibility: hidden;
-									" /></div>
         </div>
     </div>
 

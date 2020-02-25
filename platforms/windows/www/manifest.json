@@ -1,0 +1,24 @@
+﻿{
+  "manifest_version": 2,
+  "name": "VRC notification",
+  "version": "2.6.0",
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "description":"this extension notify when your friend become online on VRChat",
+  "permissions": [
+  "https://*.vrchat.cloud/",
+  "https://*.vrchat.net/",
+  "storage",
+  "notifications",
+  "background"
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+	},
+  "background":{
+  	"scripts":["jquery-1.12.4.min.js","main.js","background.js"]
+  }
+}

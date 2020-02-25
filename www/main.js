@@ -107,29 +107,54 @@ function getInfo(success,error){
 	localStorage["user_icon_url"] = userdata["currentAvatarThumbnailImageUrl"];
 	localStorage["user_name"] = userdata["displayName"];
 	localStorage["friends_num"] = userdata["friends"].length;
+	localStorage["usr_id"] = userdata["id"];
+	localStorage["usr_email"] = userdata["obfuscatedEmail"];
+	localStorage["usr_passusr"] = userdata["pastDisplayNames"];
+	localStorage["usr_usrtype"] = userdata["developerType"];
+	localStorage["usr_lastlogin"] = userdata["last_login"];
+	localStorage["usr_tags"] = userdata["tags"];
 	showInfo(userdata);
 	},error);
 }
 
 function showInfo(data){
-	$("#userpanel").show(); 
+	$("#userpanel").show();
+	$("#userpanel2").show(); 
 	console.log("Populating User Info......");
 	console.log(userdata['displayName']);
 	console.log(userdata['currentAvatarThumbnailImageUrl']);
 	var icon = userdata['currentAvatarThumbnailImageUrl'];
 	var name = userdata['displayName'];
-
+    // Profile Info
+	var id = userdata["id"];
+	var email = userdata["obfuscatedEmail"];
+	var passusr = userdata["pastDisplayNames"];
+	var usrtype = userdata["developerType"];
+	var usrlastlogin = userdata["last_login"];
+	var usrtags = userdata["tags"];
+	
 	var $img = $("<img>").attr({src: icon,id:"myicon"});
 	var $name= $("<div>").text(name);
 	var $onfr   = $("<div>").attr({id:"onfr" ,title:"onlinefriends"});
 	var $allfr  = $("<div>").attr({id:"allfr",title:"allfriends"}).text( " friends");
+	// Profile Info
+	var $email = $("<a>Email:</a><input id='text' type='text' style='width:90%' disabled>").attr({value: email});
+	var $id = $("<a>User ID:</a><input id='text' type='text' style='width:90%'disabled>").attr({value: id});
+	var $pastuser = $("<a>Past Usernames:</a><input id='text' type='text' style='width:90%'disabled>").attr({value: passusr});
+	var $usrtype = $("<a>Developer Type:</a><input id='text' type='text' style='width:90%'disabled>").attr({value: usrtype});
+	var $lastlogin = $("<a>Last Logged in:</a><input id='text' type='text' style='width:90%'disabled>").attr({value: usrlastlogin});
+	var $usrtags = $("<a>User Tags:</a><input id='text' type='text' style='width:90%'disabled>").attr({value: usrtags});
+
 	$("#userpanel").empty().append($img).append($name).append($onfr).append($allfr);
+	$("#userpanel2").empty().append($id).append($email).append($pastuser).append($usrtype).append($lastlogin).append($usrtags)
+	
+
 }
 
 
 
 function reqToken(success,error){
-	//basic�F�؂�token���擾�i�X�V�j
+	// Get Basic Token
 	var u = getUsername();
 	var p = getPassword();
 	var k = getClientapikey();
@@ -140,6 +165,7 @@ function reqToken(success,error){
 }
 
 function fetchOnlinedata(success){
+	// Got token now getting friends data
 	var key = getClientapikey();
 	var token = getToken();
 	sendReqCommand({type:"auth",key:key,token:token},"auth/user/friends",(data)=>{
@@ -161,6 +187,7 @@ function fetchOnlinedata(success){
 }
 
 
+
 function showfriends(data){
 	$("#frineds").show();
 	$("#friends").empty();
@@ -180,7 +207,7 @@ function showfriends(data){
 				src:val["currentAvatarThumbnailImageUrl"],
 				align:"middle"
 			});
-			if (debugFriends) {console.log("****name ",val["displayName"]);} // whats with your console logging? I marked it so it would be easyer to find when i have 100lines of errors
+			if (debugFriends) {console.log("Friends Username ",val["displayName"]);} // whats with your console logging? I marked it so it would be easyer to find when i have 100lines of errors
 			var worldid = worldId(val["location"]);
 			var instanceid = instanceId(val["location"]);
 
@@ -196,6 +223,8 @@ function showfriends(data){
 
 	});
 }
+
+
 
 function preset_in(str){
 	return " in " + str;
@@ -233,7 +262,7 @@ function esc(str){
   });
 }
 function loginerror(data){
-
+ alert("Login Error, Check Username or password")
 }
 
 
@@ -251,15 +280,16 @@ function instanceId(str){
 }
 function instancestatus(instanceid){
 	var status = ""
-	if(instanceid==""){return "-----"}
+	if(instanceid==""){return "Invite Only"}
 	if(instanceid.indexOf("hidden")!=-1){
 			//friends of guests
 			status = "friends of guests";
 	}else if(instanceid.indexOf("friends")!=-1){
 		//friend only
-		status =  "friend only";
+		status =  "Friend only";
+		
 	}else{
-		status = "public";
+		status = "Public";
 	}
 
 	return status;
@@ -315,18 +345,18 @@ function login(){
 			console.log("has token");
 			sendReqCommand({user:u,pass:p,key:k,token:t,type:"auth"},"auth/user",
 				(data)=>{
-					//����������serUserdata���ĕ\��
+					//Check User Login Data
 					loginsuccess(data);
 				},
 				()=>{
-					//�ł��Ȃ�������token���Â��Ƃ������ƂȂ̂�reqtoken�ōX�V����
+					// If no Token Get one
 					reqToken(
 						(data)=>{
-							//�擾�ɐ���������setUserdata���ĕ\��
+							// Set the user as logged in
 							loginsuccess(data);
 						},()=>{
-							//�擾�Ɏ��s�������\��error:���O�C���ł��܂����ł���
-							//���O�C�����ʂ� // this is fucking dumb. wtf great comments
+							// If no token was fetched then show status as logged out
+							
 							loginstatus(false);
 							logout();
 						}
@@ -334,13 +364,12 @@ function login(){
 				}
 			);
 		}else{
-			//token���Ȃ����΁i���񃍃O�C���j
+			//For first login
 			console.log("the first login");
 			reqToken((data)=>{
 				loginsuccess(data);
 
 			},()=>{
-				//���s�iapikey���ύX���ꂽ�����O�C�����񂪊Ԉ����Ă����j�Ȃ��΃��O�C�����������Ȃ���
 				loginstatus(false);
 				logout();
 
@@ -355,9 +384,9 @@ function logout(){
 	$("#friendspanel").hide();
 	$("#userpanel").hide();
 	$("#loading").hide();
-	["clientapikey","friends_num","islogin","pass","token","user_icon_url","user_name"].forEach((val)=>{
-		localStorage.removeItem(val);
-	});
+	$("#menu").hide();
+	localStorage.clear();
+
 	backgroundsend("logout");
 }
 

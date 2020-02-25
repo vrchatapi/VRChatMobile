@@ -1,0 +1,146 @@
+Failed to load resource: net::ERR_FILE_NOT_FOUND
+jQuery.Deferred exception: Unexpected token u in JSON at position 0 SyntaxError: Unexpected token u in JSON at position 0
+    at HTMLDocument.<anonymous> (file:///android_asset/www/popup.js:37:40)
+    at mightThrow (https://code.jquery.com/jquery-3.3.1.js:3534:29)
+    at process (https://code.jquery.com/jquery-3.3.1.js:3602:12) undefined
+Uncaught SyntaxError: Unexpected token u in JSON at position 0
+has not apikey ----reqKey()
+the first login
+Getting User Data
+Uncaught TypeError: Cannot read property 'length' of undefined
+has apikey ----login()
+has token
+xxxx showInfo
+Uncaught ReferenceError: chrome is not defined
+GET file:///android_asset/www/undefined net::ERR_FILE_NOT_FOUND
+[Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object]0: Object1: Object2: Object3: Object4: Object5: Object6: Object7: Object8: Object9: Object10: Object11: Object12: Object13: Object14: Object15: Object16: Object17: Object18: Object19: Object20: Object21: Object22: Objectlength: 23__proto__: Array[0]
+xxxxxxxshow friends
+[Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object]
+****name  Ashunera
+*****world  wrld_496b11e8-25a0-4f35-976d-faae5e00d60e:5219~hidden(usr_5844375b-85f4-4241-8976-2da78c6ef30c)~nonce(894898AF37D50145C442B7E1CD7F717368EF8DCDF1D5B7CE7D71FB1C27DEECD1)
+@@@@ wrld_496b11e8-25a0-4f35-976d-faae5e00d60e:5219~hidden(usr_5844375b-85f4-4241-8976-2da78c6ef30c)~nonce(894898AF37D50145C442B7E1CD7F717368EF8DCDF1D5B7CE7D71FB1C27DEECD1)
+--------------loc wrld_496b11e8-25a0-4f35-976d-faae5e00d60e
+getwn  undefined
+****name  AtlusNova
+*****world  private
+@@@@ private
+--------------loc private
+getwn  undefined
+****name  blazeou812
+*****world  wrld_925a290f-ec66-417e-b1ad-124c7db8068a:9460~hidden(usr_490f0fcb-1850-4ec1-8203-8dcb39087508)~nonce(170BCD1C6CC97FC7D2C5E11853145027BFCB97168AF88032AD7986E9B59F1E23)
+@@@@ wrld_925a290f-ec66-417e-b1ad-124c7db8068a:9460~hidden(usr_490f0fcb-1850-4ec1-8203-8dcb39087508)~nonce(170BCD1C6CC97FC7D2C5E11853145027BFCB97168AF88032AD7986E9B59F1E23)
+--------------loc wrld_925a290f-ec66-417e-b1ad-124c7db8068a
+getwn  undefined
+****name  Captain_Sea
+*****world  wrld_8ce91eb4-51fc-4a2b-989d-32906c3da79c:19173
+@@@@ wrld_8ce91eb4-51fc-4a2b-989d-32906c3da79c:19173
+--------------loc wrld_8ce91eb4-51fc-4a2b-989d-32906c3da79c
+getwn  undefined
+****name  ChrisWF
+*****world  private
+@@@@ private
+--------------loc private
+getwn  undefined
+****name  Darkcloud484
+*****world  private
+@@@@ private
+--------------loc private
+getwn  undefined
+****name  fuzzydays
+*****world  wrld_7c5287ff-cc2e-4722-b788-6aa890386749:21637~hidden(usr_cdcb498f-0233-44de-81bd-5f800b6fe4d2)~nonce(F9117396B9BEB713A71611550E9A1567330A19DC4CF3B83A3989960A54F5A207)
+@@@@ wrld_7c5287ff-cc2e-4722-b788-6aa890386749:21637~hidden(usr_cdcb498f-0233-44de-81bd-5f800b6fe4d2)~nonce(F9117396B9BEB713A71611550E9A1567330A19DC4CF3B83A3989960A54F5A207)
+--------------loc wrld_7c5287ff-cc2e-4722-b788-6aa890386749
+getwn  undefined
+****name  Juspertinry
+*****world  private
+@@@@ private
+--------------loc private
+getwn  undefined
+****name  Lancer
+*****world  wrld_cf116cea-123a-4e5b-8ebb-71c1b46fd89f:13551~hidden(usr_ed834bd0-97bd-45d1-8b82-531317c6ee42)~nonce(D0A8BCD478B1347F19CD857D39788BF73491F54B54C6365FB459D6D9BA77C15C)
+@@@@ wrld_cf116cea-123a-4e5b-8ebb-71c1b46fd89f:13551~hidden(usr_ed834bd0-97bd-45d1-8b82-531317c6ee42)~nonce(D0A8BCD478B1347F19CD857D39788BF73491F54B54C6365FB459D6D9BA77C15C)
+--------------loc wrld_cf116cea-123a-4e5b-8ebb-71c1b46fd89f
+getwn  undefined
+****name  Maru!
+*****world  private
+@@@@ private
+--------------loc private
+getwn  undefined
+****name  Marz
+*****world  private
+@@@@ private
+--------------loc private
+getwn  undefined
+****name  Miku_Hatsune_
+*****world  wrld_496b11e8-25a0-4f35-976d-faae5e00d60e:41682
+@@@@ wrld_496b11e8-25a0-4f35-976d-faae5e00d60e:41682
+--------------loc wrld_496b11e8-25a0-4f35-976d-faae5e00d60e
+getwn  undefined
+****name  Nacho Bunny
+*****world  private
+@@@@ private
+--------------loc private
+getwn  undefined
+****name  NYUU1987
+*****world  wrld_925a290f-ec66-417e-b1ad-124c7db8068a:9460~hidden(usr_490f0fcb-1850-4ec1-8203-8dcb39087508)~nonce(170BCD1C6CC97FC7D2C5E11853145027BFCB97168AF88032AD7986E9B59F1E23)
+@@@@ wrld_925a290f-ec66-417e-b1ad-124c7db8068a:9460~hidden(usr_490f0fcb-1850-4ec1-8203-8dcb39087508)~nonce(170BCD1C6CC97FC7D2C5E11853145027BFCB97168AF88032AD7986E9B59F1E23)
+--------------loc wrld_925a290f-ec66-417e-b1ad-124c7db8068a
+getwn  undefined
+****name  persia000123
+*****world  wrld_925a290f-ec66-417e-b1ad-124c7db8068a:9460~hidden(usr_490f0fcb-1850-4ec1-8203-8dcb39087508)~nonce(170BCD1C6CC97FC7D2C5E11853145027BFCB97168AF88032AD7986E9B59F1E23)
+@@@@ wrld_925a290f-ec66-417e-b1ad-124c7db8068a:9460~hidden(usr_490f0fcb-1850-4ec1-8203-8dcb39087508)~nonce(170BCD1C6CC97FC7D2C5E11853145027BFCB97168AF88032AD7986E9B59F1E23)
+--------------loc wrld_925a290f-ec66-417e-b1ad-124c7db8068a
+getwn  undefined
+****name  Samukki
+*****world  wrld_6e77e43e-3fdd-447f-9c49-f13351febc0a:30066
+@@@@ wrld_6e77e43e-3fdd-447f-9c49-f13351febc0a:30066
+--------------loc wrld_6e77e43e-3fdd-447f-9c49-f13351febc0a
+getwn  undefined
+****name  Selivaria
+*****world  private
+@@@@ private
+--------------loc private
+getwn  undefined
+****name  Shina
+*****world  wrld_925a290f-ec66-417e-b1ad-124c7db8068a:9460~hidden(usr_490f0fcb-1850-4ec1-8203-8dcb39087508)~nonce(170BCD1C6CC97FC7D2C5E11853145027BFCB97168AF88032AD7986E9B59F1E23)
+@@@@ wrld_925a290f-ec66-417e-b1ad-124c7db8068a:9460~hidden(usr_490f0fcb-1850-4ec1-8203-8dcb39087508)~nonce(170BCD1C6CC97FC7D2C5E11853145027BFCB97168AF88032AD7986E9B59F1E23)
+--------------loc wrld_925a290f-ec66-417e-b1ad-124c7db8068a
+getwn  undefined
+****name  static_aero
+*****world  wrld_c8489bf5-076e-471e-87de-b8739b37acfa:95308~hidden(usr_2590a04d-5c03-4693-887a-75584378e986)~nonce(7BBE29721533E1B0CC559DE75FD0100E2961725E66F4FD9750575DB41DAA899A)
+@@@@ wrld_c8489bf5-076e-471e-87de-b8739b37acfa:95308~hidden(usr_2590a04d-5c03-4693-887a-75584378e986)~nonce(7BBE29721533E1B0CC559DE75FD0100E2961725E66F4FD9750575DB41DAA899A)
+--------------loc wrld_c8489bf5-076e-471e-87de-b8739b37acfa
+getwn  undefined
+****name  ThatLambda
+*****world  wrld_925a290f-ec66-417e-b1ad-124c7db8068a:9460~hidden(usr_490f0fcb-1850-4ec1-8203-8dcb39087508)~nonce(170BCD1C6CC97FC7D2C5E11853145027BFCB97168AF88032AD7986E9B59F1E23)
+@@@@ wrld_925a290f-ec66-417e-b1ad-124c7db8068a:9460~hidden(usr_490f0fcb-1850-4ec1-8203-8dcb39087508)~nonce(170BCD1C6CC97FC7D2C5E11853145027BFCB97168AF88032AD7986E9B59F1E23)
+--------------loc wrld_925a290f-ec66-417e-b1ad-124c7db8068a
+getwn  undefined
+****name  TheHiPrince
+*****world  wrld_764143de-76bd-4102-92f2-0ba3991687b9:30513
+@@@@ wrld_764143de-76bd-4102-92f2-0ba3991687b9:30513
+--------------loc wrld_764143de-76bd-4102-92f2-0ba3991687b9
+getwn  undefined
+****name  Written
+*****world  wrld_2180f3da-82be-440f-9225-85109ebe04bf:30516~hidden(usr_b64db841-ef62-4180-b3c5-5102c128e001)~nonce(0341D380277038130C96D934AA69164871856CAE18975AF3C8B6D396B193D6FC)
+@@@@ wrld_2180f3da-82be-440f-9225-85109ebe04bf:30516~hidden(usr_b64db841-ef62-4180-b3c5-5102c128e001)~nonce(0341D380277038130C96D934AA69164871856CAE18975AF3C8B6D396B193D6FC)
+--------------loc wrld_2180f3da-82be-440f-9225-85109ebe04bf
+getwn  undefined
+****name  ZaaZu
+*****world  wrld_ab39b5db-95bf-4a23-b13c-ea3a24c87a33:83599~hidden(usr_de00dbc9-1374-4a04-b574-cea431d0cc94)~nonce(855DB503F639F37D93990C61B48505E5405A9648842D594B2289B47C990FD78B)
+@@@@ wrld_ab39b5db-95bf-4a23-b13c-ea3a24c87a33:83599~hidden(usr_de00dbc9-1374-4a04-b574-cea431d0cc94)~nonce(855DB503F639F37D93990C61B48505E5405A9648842D594B2289B47C990FD78B)
+--------------loc wrld_ab39b5db-95bf-4a23-b13c-ea3a24c87a33
+getwn  undefined
+fetch************* wrld_2180f3da-82be-440f-9225-85109ebe04bf
+fetch************* wrld_6e77e43e-3fdd-447f-9c49-f13351febc0a
+fetch************* wrld_ab39b5db-95bf-4a23-b13c-ea3a24c87a33
+fetch************* wrld_925a290f-ec66-417e-b1ad-124c7db8068a
+fetch************* wrld_496b11e8-25a0-4f35-976d-faae5e00d60e
+fetch************* wrld_c8489bf5-076e-471e-87de-b8739b37acfa
+fetch************* wrld_925a290f-ec66-417e-b1ad-124c7db8068a
+fetch************* wrld_496b11e8-25a0-4f35-976d-faae5e00d60e
+fetch************* wrld_8ce91eb4-51fc-4a2b-989d-32906c3da79c
+fetch************* wrld_764143de-76bd-4102-92f2-0ba3991687b9
+fetch************* wrld_cf116cea-123a-4e5b-8ebb-71c1b46fd89f
+fetch************* wrld_925a290f-ec66-417e-b1ad-124c7db8068a
+fetch************* wrld_7c5287ff-cc2e-4722-b788-6aa890386749

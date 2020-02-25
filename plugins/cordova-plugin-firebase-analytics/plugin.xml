@@ -1,0 +1,67 @@
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+xmlns:android="http://schemas.android.com/apk/res/android"
+           id="cordova-plugin-firebase-analytics"
+      version="2.0.4">
+
+    <name>FirebaseAnalyticsPlugin</name>
+    <description>Cordova plugin for Firebase Analytics</description>
+    <license>MIT</license>
+    <keywords>cordova</keywords>
+    <repo>https://github.com/chemerisuk/cordova-plugin-firebase-analytics</repo>
+    <issue>https://github.com/chemerisuk/cordova-plugin-firebase-analytics/issues</issue>
+
+    <js-module src="www/FirebaseAnalytics.js" name="FirebaseAnalytics">
+        <merges target="cordova.plugins.firebase.analytics" />
+    </js-module>
+
+    <engines>
+        <engine name="cordova" version=">=9.0.0"/>
+        <engine name="cordova-android" version=">=7.0.0"/>
+        <engine name="cordova-ios" version=">=5.0.0"/>
+    </engines>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="FirebaseAnalytics">
+                <param name="ios-package" value="FirebaseAnalyticsPlugin" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/FirebaseAnalyticsPlugin.h" />
+        <source-file src="src/ios/FirebaseAnalyticsPlugin.m" />
+
+        <podspec>
+            <config>
+                <source url="https://github.com/CocoaPods/Specs.git"/>
+            </config>
+            <pods>
+                <pod name="Firebase/Analytics" spec="~> 6.1.0" />
+            </pods>
+        </podspec>
+    </platform>
+
+    <platform name="android">
+        <preference name="FIREBASE_CORE_VERSION" default="16.0.+"/>
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="FirebaseAnalytics">
+                <param name="android-package" value="by.chemerisuk.cordova.firebase.FirebaseAnalyticsPlugin" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>
+
+        <dependency id="cordova-support-android-plugin" version="~1.0.0"/>
+        <dependency id="cordova-support-google-services" version="^1.2.0"/>
+
+        <framework src="com.google.firebase:firebase-core:$FIREBASE_CORE_VERSION" />
+
+        <source-file src="src/android/FirebaseAnalyticsPlugin.java"
+            target-dir="src/by/chemerisuk/cordova/firebase/" />
+    </platform>
+
+</plugin>

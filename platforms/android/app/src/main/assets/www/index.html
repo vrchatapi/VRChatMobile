@@ -21,6 +21,21 @@
     <script src="background.js"></script>
     <link rel='stylesheet' href='material-refresh.min.css' />
     <script src='material-refresh.min.js'></script>
+	<script>
+	document.addEventListener('deviceready', function () {
+  // Enable to debug issues.
+  // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+  
+  var notificationOpenedCallback = function(jsonData) {
+    console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+  };
+
+  window.plugins.OneSignal
+    .startInit("18914d27-076c-4fe4-b2b0-69692a290c35")
+    .handleNotificationOpened(notificationOpenedCallback)
+    .endInit();
+}, false);
+	</script>
 
 </head>
 
@@ -44,22 +59,23 @@
             <ul>
                 <li><a id="profile" href="profile.html" class="button fit">My Profile</a></li>
                 <li><a id="logout" href="#" class="button fit">Logout</a></li>
-                <li><a href="chat.html" class="button fit">Chat</a></li>
-		<li><a href="#settings" class="button fit">Settings(Coming Soon)</a></li>
+				<li><a href="noti.html" class="button fit">Notifcations</a></li>
+                <li>
                     <a href="https://discord.gg/FtZfEsk"><img src="img/logo_discord_our.png" style="
   																									height: 62px;
     																								border-radius: 0%;
     																								padding-top: 5px;
 																									">
                     </a>
-                    <a href="https://www.patreon.com/VRChapTeam"><img src="img/logo_patreon.png" style="
-  																									height: 62px;
-    																								border-radius: 0%;
-    																								padding-top: 5px;
-																									">
+                    <a href="https://www.buymeacoffee.com/RoxyBoxxy"><img src="img/logo_patreon.png" style="
+  																									height: 47px;
+  																									border-radius: 0%;
+  																									padding-top: 5px;
+  																									width: 241px;
+  																							">
                     </a>
 
-                    <h1 id="version">Version 1.2.2<a href="debug.html">.</a></h1>
+                    <h1 id="version">Version 5.0.0<a href="debug.html">.</a></h1>
                 </li>
                 <li>
                     <!--<div id="google_translate_element"></div> -->
@@ -97,11 +113,15 @@
    											 Notice: This isn't the official game, This is a <strong>third party</strong> tool used to manage your account and friends, Before continuing please read our <a href="https://vrchap.net/mobile/privacy" style="color: #9bf1ff;">privacy policy here</a>.</h1> </div>
             </div>
         </div>
-        <div id="userpanel">
+        <div id="userpanel" style="
+    padding-left: 25px;
+    padding-top: 8px;
+">
 
         </div>
 
         <div id="friendspanel">
+
             <ul id="friends" style="
    									 position: relative;
     								 right: 2.8%;

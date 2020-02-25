@@ -1,0 +1,36 @@
+android.defaultConfig {
+  manifestPlaceholders = [
+    onesignal_app_id: '', // Use from js code
+    onesignal_google_project_number: 'REMOTE'
+  ]
+}
+
+// Required for Android Support Library 26.0.0+ and Google Play services 11.+
+repositories {
+  maven { url 'https://maven.google.com' }
+}
+
+// Adding Onesignal-Gradle-Plugin to align gms, android support library, and firebase
+//   dependencies between other plugins.
+// Source for Onesignal-Gradle-Plugin: https://github.com/OneSignal/OneSignal-Gradle-Plugin
+buildscript {
+  repositories {
+    maven { url 'https://plugins.gradle.org/m2/'}
+  }
+  dependencies {
+    classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.1, 0.99.99]'
+  }
+}
+apply plugin: com.onesignal.androidsdk.GradleProjectPlugin
+
+
+// Local testing
+// buildscript {
+//   repositories {
+//     maven { url uri('file:/full/paht/to/maven/repo/') }
+//   }
+//   dependencies {
+//     classpath 'com.onesignal:onesignal-gradle-plugin:[0.12.1, 0.99.99]'
+//   }
+// }
+// apply plugin: com.onesignal.androidsdk.GradleProjectPlugin
